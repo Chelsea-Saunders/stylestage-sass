@@ -11,6 +11,10 @@
 - [Skranji-SubHeader] @import url('https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap'); 
 - [SourceSans3-Paragraph] @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap');
 
+# WireFrame Links
+- Desktop Version (https://wireframe.cc/tUByRz)
+- Mobile Version (https://wireframe.cc/SbXon1)
+
 # Style Stage Source Sass
 > A minimal starter for Style Stage submissions that includes the source Sass used to create the base Style Stage theme, and the source HTML.
 
