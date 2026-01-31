@@ -1,3 +1,6 @@
+
+@use "../composition/logomark" as *;
+
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
@@ -14,7 +17,7 @@ header {
   text-align: center;
 
   h1 {
-    @include logomark;
+    @include logomark();
   }
 
   h2 {

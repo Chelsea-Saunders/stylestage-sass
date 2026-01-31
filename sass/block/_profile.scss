@@ -1,3 +1,6 @@
+
+@use "../composition/theme" as theme;
+
 .profile {
   width: 95vw;
   max-width: 80ch;
@@ -60,7 +63,7 @@
     margin-bottom: 0;
     border-radius: var(--border-radius);
     background-color: var(--color-light);
-    box-shadow: 0 2px 5px rgba(color(primary), 0.15);
+    box-shadow: 0 2px 5px rgba(theme.color(primary), 0.15);
 
     ul {
       justify-content: unset;
