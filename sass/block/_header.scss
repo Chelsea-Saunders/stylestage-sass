@@ -6,21 +6,68 @@ header {
   --logomark-padding: 0 1em;
 
   display: grid;
-  min-height: 40vh;
   place-items: center;
-  padding: 10vh 2rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%233a00ff' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d42257' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: 0 -38px, 17px -40px;
+  padding: 3rem 0 0 0;
   color: var(--color-primary);
   text-align: center;
-
+  transition: padding 250ms ease;
   h1 {
     @include logomark();
+    cursor: pointer;
+
+    &::after {
+      content: " ▾";
+      font-size: 0.8rem;
+    }
   }
 
   h2 {
     max-width: 30ch;
+  }
+
+  // hide everything in header except h1
+  .container > :not(h1){
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    padding: 0;
+    margin: 0;
+    transition: max-height 250ms ease, opacity 200ms ease, padding 250ms ease;
+    font-size: 0.7rem;
+    color: var(--color-gray);
+    margin-inline: auto;
+  }
+
+  // open
+  &:has(h1:hover),
+  &:has(h1:focus-visible) {
+    padding: 2rem 2rem;
+
+    // reveal hidden header on hover or keyboard focus
+    .container > :not(h1) {
+      max-height: 500px;
+      opacity: 1;
+      padding: 2rem 0 0; // padding added when open
+    }
+
+    // when header is open, change arrow direction
+    h1::after {
+      content: " ▴";
+    }
+  }
+}
+// shared stacking rules
+header, 
+nav {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 700px) {
+  header {
+    h1::after {
+      content: none;
+    }
   }
 }

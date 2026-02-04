@@ -4,7 +4,7 @@
 - Landon Stucki
 
 # Trial Color Pallette
-- #1E242C | #6E7681 | #4C6E91 | #6B8FA3 | #B7C4BE
+- #1E242C | #6E7681 | #4C6E91 | #6B8FA3 | #B7C4BE | #E6E9EB | #A1E5F1
 
 # Trial Fonts
 - [SpaceGrotesk-Header] @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@300..700&display=swap');

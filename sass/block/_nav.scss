@@ -1,35 +1,72 @@
+
+
 nav {
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  // place "nav" on top of small page
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: center;
 
-    a {
-      display: inline-grid;
-      padding: 0.5rem;
-      color: var(--color-secondary);
-      font-size: 1.25rem;
-      text-decoration: none;
+  // visually tuck nav into the header
+  transform: translateY(-0.75rem);
 
-      &::before {
-        width: 100%;
-        height: 0.33em;
-        background-color: var(--color-secondary);
-        opacity: 0.15;
-        content: "";
-      }
+  padding: 0 1rem;
+  transition: padding 250ms ease;
 
-      &:hover::before,
-      &:focus::before {
-        opacity: 1;
-      }
+  &::before {
+    content: "Menu ▾";
+    display: inline-block;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+
+  // open dropdown and adjust padding and flip arrow
+  &:hover, 
+  &:focus-within {
+    padding-bottom: 1rem;
+
+    ul {
+      max-height: 500px; // big enough to show all items
     }
 
-    li {
-      margin: 0.25rem;
+    // when nav is open, flip arrow
+    &::before {
+      content: "Menu ▴";
+    }
+
+  }
+
+  // make nav list layout nicer
+  ul {
+    // collapsible nav list
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 250ms ease;
+
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+// larger screens
+@media (min-width: 700px) {
+  nav {
+    &::before {
+      content: none;
+    }
+
+    ul {
+      max-height: none;
+      overflow: visible;
+      transition: none;
+      grid-auto-flow: column;
+      justify-content: center;
     }
   }
 }
