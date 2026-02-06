@@ -3,13 +3,17 @@ name: Deploy to Github Pages
 on:
   push:
     branches:
-      - main  # Set a branch name to trigger deployment
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
