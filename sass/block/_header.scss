@@ -4,7 +4,7 @@
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
-
+  height:100vh;
   display: grid;
   place-items: center;
   padding: 3rem 0 0 0;
@@ -14,11 +14,6 @@ header {
   h1 {
     @include logomark();
     cursor: pointer;
-
-    &::after {
-      content: " ▾";
-      font-size: 0.8rem;
-    }
   }
 
   h2 {
@@ -39,23 +34,6 @@ header {
     margin-inline: auto;
   }
 
-  // open
-  &:has(h1:hover),
-  &:has(h1:focus-visible) {
-    padding: 2rem 2rem;
-
-    // reveal hidden header on hover or keyboard focus
-    .container > :not(h1) {
-      max-height: 500px;
-      opacity: 1;
-      padding: 2rem 0 0; // padding added when open
-    }
-
-    // when header is open, change arrow direction
-    h1::after {
-      content: " ▴";
-    }
-  }
 }
 // shared stacking rules
 header, 
@@ -64,10 +42,5 @@ nav {
   z-index: 1;
 }
 
-@media (min-width: 700px) {
-  header {
-    h1::after {
-      content: none;
-    }
-  }
+@media (min-width: 950px) {
 }
