@@ -203,6 +203,7 @@
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
+  height: 100vh;
   display: grid;
   place-items: center;
   padding: 3rem 0 0 0;
@@ -219,10 +220,6 @@ header h1 {
   place-content: center;
   cursor: pointer;
 }
-header h1::after {
-  content: " ▾";
-  font-size: 0.8rem;
-}
 header h2 {
   max-width: 30ch;
 }
@@ -237,17 +234,6 @@ header .container > :not(h1) {
   color: var(--color-gray);
   margin-inline: auto;
 }
-header:has(h1:hover), header:has(h1:focus-visible) {
-  padding: 2rem 2rem;
-}
-header:has(h1:hover) .container > :not(h1), header:has(h1:focus-visible) .container > :not(h1) {
-  max-height: 500px;
-  opacity: 1;
-  padding: 2rem 0 0;
-}
-header:has(h1:hover) h1::after, header:has(h1:focus-visible) h1::after {
-  content: " ▴";
-}
 
 header,
 nav {
@@ -255,11 +241,6 @@ nav {
   z-index: 1;
 }
 
-@media (min-width: 700px) {
-  header h1::after {
-    content: none;
-  }
-}
 .skip-link {
   position: absolute;
   top: auto;
@@ -353,56 +334,6 @@ nav {
   fill: currentColor;
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  text-align: center;
-  transform: translateY(-0.75rem);
-  padding: 0 1rem;
-  transition: padding 250ms ease;
-}
-nav::before {
-  content: "Menu ▾";
-  display: inline-block;
-  padding: 0.5rem 0;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--color-secondary);
-}
-nav:hover, nav:focus-within {
-  padding-bottom: 1rem;
-}
-nav:hover ul, nav:focus-within ul {
-  max-height: 500px;
-}
-nav:hover::before, nav:focus-within::before {
-  content: "Menu ▴";
-}
-nav ul {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 250ms ease;
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-@media (min-width: 700px) {
-  nav::before {
-    content: none;
-  }
-  nav ul {
-    max-height: none;
-    overflow: visible;
-    transition: none;
-    grid-auto-flow: column;
-    justify-content: center;
-  }
-}
 :root {
   --color-primary: #4C6E91;
   --color-primary-alt: #6B8FA3;
@@ -421,6 +352,57 @@ nav ul {
   --border-radius: 8px;
 }
 
+nav {
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  text-align: center;
+  padding: 0 1rem;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  background-color: #6B8FA3;
+  border-radius: 100px;
+  display: flex;
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 10px;
+  gap: 10px;
+}
+nav ul li {
+  align-items: center;
+}
+nav a {
+  font-size: 10px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 100px;
+  padding: 5px;
+  text-decoration: none;
+  font-weight: bolder;
+  color: white;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+nav a:hover {
+  transform: translateY(2px);
+  background-color: #4C6E91;
+}
+
+@media (min-width: 669px) {
+  nav ul a {
+    font-size: 17px;
+    width: 100px;
+  }
+}
+@media (min-width: 800px) {
+  nav ul a {
+    font-size: 17px;
+    width: 125px;
+  }
+}
 .profile {
   width: 95vw;
   max-width: 80ch;
