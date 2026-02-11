@@ -335,6 +335,7 @@ nav {
 }
 
 :root {
+  color-scheme: light dark;
   --color-primary: #4C6E91;
   --color-primary-alt: #6B8FA3;
   --color-secondary: #6E7681;
@@ -352,6 +353,16 @@ nav {
   --border-radius: 8px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1E242C;
+    --color-text: #E6E9EB;
+    --color-anchor: #B7C4BE;
+    --color-primary: #6B8FA3;
+    --color-primary-alt: #9cd6e0;
+    --color-light: #050507;
+  }
+}
 nav {
   height: 100px;
   width: 100%;
@@ -564,6 +575,10 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family);
+}
+
+a {
+  color: var(--color-anchor);
 }
 
 main {
