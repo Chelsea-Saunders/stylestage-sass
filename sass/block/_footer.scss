@@ -1,6 +1,7 @@
 
 @use "../composition/logomark" as *;
 
+// Styling for footer of page with class="page-footer"
 .page-footer {
   --logomark-height: 2em;
   --logomark-padding: 0;
