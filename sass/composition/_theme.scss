@@ -57,6 +57,9 @@ $font-sizes: (
 
 // stylelint-disable
 :root {
+  // DARK MODE
+  color-scheme: light dark;
+  
   @each $key, $color in $colors {
     --color-#{$key}: #{$color};
   }
@@ -70,4 +73,25 @@ $font-sizes: (
   }
 
   --border-radius: #{$border-radius};
+}
+
+// AUTO DARK MODE: based on user's system preferences
+@media (prefers-color-scheme: dark) {
+  :root {
+    // override only what needs to change
+    --color-background: #{$color-background-dark-mode};
+
+    // lighter text
+    --color-text: #{$color-light};
+
+    // contrast for links
+    --color-anchor: #{$color-links};
+
+    // brand colors with more contrast
+    --color-primary: #{$color-primary-alt};
+    --color-primary-alt: #{$color-accent};
+
+    // redefined light color for dark mode
+    --color-light: #{mix($color-background-dark-mode, #000, 15%)};
+  }
 }

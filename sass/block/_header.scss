@@ -4,6 +4,7 @@
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
+
   height:100vh;
   display: grid;
   place-items: center;
@@ -11,6 +12,7 @@ header {
   color: var(--color-primary);
   text-align: center;
   transition: padding 250ms ease;
+  
   h1 {
     @include logomark();
     cursor: pointer;

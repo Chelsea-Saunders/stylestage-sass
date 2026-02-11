@@ -5,6 +5,11 @@ body {
   font-family: var(--font-family);
 }
 
+// DARK MODE LINKS
+a {
+  color: var(--color-anchor);
+}
+
 main {
   padding-top: 5vh;
   padding-bottom: 5vh;
