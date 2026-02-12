@@ -1,0 +1,26 @@
+
+// layout for main container of page
+#main > .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    grid-template-areas: 
+        "about"
+        "guidelines"
+        "contribute"
+}
+
+@media (min-width: 950px) {
+    #main > .container {
+        column-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-areas: 
+            "about       ."
+            ".           guidelines"
+            "contribute  ."
+    }
+}
+
+
