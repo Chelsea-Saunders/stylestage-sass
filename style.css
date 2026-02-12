@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap");
+#about {
+  grid-area: about;
+}
 #about section:nth-child(2) {
   position: relative;
 }
@@ -44,6 +47,10 @@
   #about section:nth-child(2)::before {
     transform: scale(2) translate(-25%, -25%);
   }
+}
+
+#contribute {
+  grid-area: contribute;
 }
 
 #about section:nth-child(2) {
@@ -161,6 +168,9 @@
   margin-bottom: 0;
 }
 
+#guidelines {
+  grid-area: guidelines;
+}
 #guidelines h3 {
   display: inline-block;
   transform: rotate(-8deg) translateX(-10%);
@@ -571,6 +581,20 @@ nav a:hover {
   content: "Grid FTW!";
 }
 
+#main > .container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "about" "guidelines" "contribute";
+}
+
+@media (min-width: 950px) {
+  #main > .container {
+    column-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "about       ." ".           guidelines" "contribute  .";
+  }
+}
 body {
   background-color: var(--color-background);
   color: var(--color-text);
