@@ -350,8 +350,12 @@ nav {
   --color-primary-alt: #6B8FA3;
   --color-secondary: #6E7681;
   --color-background: #E6E9EB;
+  --color-background-dark-mode: #1E242C;
   --color-text: #414d59;
-  --color-light: #fff;
+  --color-light: #E6E9EB;
+  --color-accent: #9cd6e0;
+  --color-gray: #666a6d;
+  --color-links: #B7C4BE;
   --color-anchor: #4C6E91;
   --font-family: "Baloo 2", sans-serif;
   --font-weight-strong: 500;
@@ -370,6 +374,7 @@ nav {
     --color-anchor: #B7C4BE;
     --color-primary: #6B8FA3;
     --color-primary-alt: #9cd6e0;
+    --color-accent: #9cd6e0;
     --color-light: #050507;
   }
 }
@@ -590,8 +595,10 @@ nav a:hover {
 
 @media (min-width: 950px) {
   #main > .container {
-    column-gap: 2rem;
+    column-gap: 3rem;
     grid-template-columns: 1fr 1fr;
+    padding: 5rem;
+    background: linear-gradient(to right, transparent calc(50% - 3px), var(--color-primary) 50%, transparent calc(50% + 3px));
     grid-template-areas: "about       ." ".           guidelines" "contribute  .";
   }
 }
