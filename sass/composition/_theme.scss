@@ -24,8 +24,14 @@ $colors: map-merge(
   $brand-colors,
   (
     background: $color-background,
+    background-dark-mode: $color-background-dark-mode,
     text: $color-body,
-    light: #fff,
+    light: $color-light,
+    accent: $color-accent, 
+    gray: $color-gray,
+    links: $color-links,
+    primary: $color-primary,
+    primary-alt: $color-primary-alt,
   )
 );
 
@@ -90,6 +96,9 @@ $font-sizes: (
     // brand colors with more contrast
     --color-primary: #{$color-primary-alt};
     --color-primary-alt: #{$color-accent};
+
+    // accent color
+    --color-accent: #{$color-accent};
 
     // redefined light color for dark mode
     --color-light: #{mix($color-background-dark-mode, #000, 15%)};

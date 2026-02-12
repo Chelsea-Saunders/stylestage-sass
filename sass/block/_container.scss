@@ -8,19 +8,25 @@
     grid-template-areas: 
         "about"
         "guidelines"
-        "contribute"
+        "contribute";
 }
 
 @media (min-width: 950px) {
     #main > .container {
-        column-gap: 2rem;
+        column-gap: 3rem;
         grid-template-columns: 1fr 1fr;
+        padding: 5rem;
+
+        background: linear-gradient(
+            to right, 
+            transparent calc(50% - 3px), 
+            var(--color-primary) 50%,
+            transparent calc(50% + 3px)
+        );
 
         grid-template-areas: 
             "about       ."
             ".           guidelines"
-            "contribute  ."
+            "contribute  .";
     }
 }
-
-
