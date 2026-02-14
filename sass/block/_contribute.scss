@@ -36,8 +36,19 @@
     opacity: 0.8;
     content: "";
     z-index: -1; }
-    @media (max-width: 35rem) {
+    @media (max-width: 950px) {
       #about section:nth-child(2)::before {
         transform: scale(2) translate(-25%, -25%); 
       } 
+      // footer#files {
+      //   position: relative; 
+      //   left: 50%;
+      //   width: 100vw;
+      //   margin-left: -50vw;
+      // }
+      // footer#files > .container {
+      //   margin-inline: auto;
+      //   width: min(44rem, 100%);
+      //   text-align: center;
+      // }
     }

@@ -12,10 +12,17 @@
 }
 
 @media (min-width: 950px) {
+    #main {
+        overflow-x: clip;
+    }
+    
     #main > .container {
-        column-gap: 3rem;
+        --main-pad: 5rem;
+        --col-gap: 3rem;
+
+        column-gap: var(--col-gap);
+        padding: var(--main-pad);
         grid-template-columns: 1fr 1fr;
-        padding: 5rem;
 
         background: linear-gradient(
             to right, 

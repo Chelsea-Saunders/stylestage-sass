@@ -1,9 +1,9 @@
 
 // #files are the "download CSS & download HTML" sections of the page
+
 #files {
   display: grid;
   place-content: center;
-  margin: 5vh auto;
   text-align: center;
 
   h3 {
@@ -12,18 +12,56 @@
   }
 
   .container {
-    display: inline-block;
-    padding: 5vmin;
+    // one column for mobile
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    justify-items: center; 
+
+    padding: 10vmin 3vmin 2vmin 3vmin;
     outline: 4px dashed var(--color-secondary);
     background-color: var(--color-background);
     text-align: center;
+    align-items: center;
+  }
+  .container a {
+    border-radius: 50px;
+  }
+  .container a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+  }
 
-    a:not(:last-child) {
-      margin: 0.5rem;
+  @media (min-width: 950px) {
+    width: calc(200% + var(--col-gap));
+    margin-left: 0;
+    padding: 4rem 0;
 
-      &:not(.link-codepen) {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-      }
+    place-content: initial;
+    justify-items: center;
+
+
+    .container {
+      margin-inline: auto;
+      width: min(28rem, 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      transform: translateX(calc(var(--col-gap) / 3));
+    }
+
+    .link-downloadcss {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .link-downloadhtml {
+      grid-column: 2; 
+      grid-row: 1;
+    }
+    .link-codepen {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      justify-self: center;
     }
   }
 }
