@@ -96,7 +96,7 @@
   z-index: -1;
 }
 
-@media (max-width: 35rem) {
+@media (max-width: 950px) {
   #about section:nth-child(2)::before {
     transform: scale(2) translate(-25%, -25%);
   }
@@ -104,7 +104,6 @@
 #files {
   display: grid;
   place-content: center;
-  margin: 5vh auto;
   text-align: center;
 }
 #files h3 {
@@ -112,17 +111,52 @@
   opacity: 0;
 }
 #files .container {
-  display: inline-block;
-  padding: 5vmin;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  justify-items: center;
+  padding: 10vmin 3vmin 2vmin 3vmin;
   outline: 4px dashed var(--color-secondary);
   background-color: var(--color-background);
   text-align: center;
+  align-items: center;
 }
-#files .container a:not(:last-child) {
-  margin: 0.5rem;
+#files .container a {
+  border-radius: 50px;
 }
-#files .container a:not(:last-child):not(.link-codepen) {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+#files .container a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+@media (min-width: 950px) {
+  #files {
+    width: calc(200% + var(--col-gap));
+    margin-left: 0;
+    padding: 4rem 0;
+    place-content: initial;
+    justify-items: center;
+  }
+  #files .container {
+    margin-inline: auto;
+    width: min(28rem, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    transform: translateX(calc(var(--col-gap) / 3));
+  }
+  #files .link-downloadcss {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #files .link-downloadhtml {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #files .link-codepen {
+    grid-column: 1/-1;
+    grid-row: 2;
+    justify-self: center;
+  }
 }
 
 .page-footer {
@@ -312,7 +346,7 @@ nav {
 
 .link-codepen {
   display: block;
-  margin-top: 3rem;
+  margin-top: 1rem;
   font-size: var(--font-size-h4);
 }
 .link-codepen::before {
@@ -594,10 +628,16 @@ nav a:hover {
 }
 
 @media (min-width: 950px) {
+  #main {
+    overflow-x: clip;
+  }
+
   #main > .container {
-    column-gap: 3rem;
+    --main-pad: 5rem;
+    --col-gap: 3rem;
+    column-gap: var(--col-gap);
+    padding: var(--main-pad);
     grid-template-columns: 1fr 1fr;
-    padding: 5rem;
     background: linear-gradient(to right, transparent calc(50% - 3px), var(--color-primary) 50%, transparent calc(50% + 3px));
     grid-template-areas: "about       ." ".           guidelines" "contribute  .";
   }
