@@ -1,5 +1,22 @@
 @use "../composition/theme" as *;
 
+@mixin nav-link($bg-hover) {
+  font-size:10px;
+  display: inline-block;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 100px;
+  padding: 5px;
+  text-decoration: none;
+  font-weight:bolder;
+  color: white;
+
+  transition: transform 150ms ease, background-color 150ms ease;
+
+  &:hover {
+    transform: translateY(2px);   
+    background-color: $bg-hover;
+}
+
 nav {
   height: 100px;
   width: 100%;
@@ -26,20 +43,7 @@ nav {
   }
 
   a {
-    font-size:10px;
-    display: inline-block;           
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 100px;
-    padding: 5px;
-    text-decoration: none;
-    font-weight:bolder;
-    color: white;
-
-    transition: transform 150ms ease, background-color 150ms ease;
-
-    &:hover {
-      transform: translateY(2px);   
-      background-color: $color-primary;
+      @include nav-link($color-primary);
     }
   }
 }
@@ -48,8 +52,6 @@ nav {
 @media (min-width: 669px) {
   nav{
     ul{
-      li{
-      }
       a{
         font-size:17px;
         width:100px;
@@ -62,8 +64,6 @@ nav {
 @media (min-width: 800px) {
   nav{
     ul{
-      li{
-      }
       a{
         font-size:17px;
         width:125px;

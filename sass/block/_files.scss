@@ -18,7 +18,11 @@
     gap: 1.5rem;
     justify-items: center; 
 
-    padding: 10vmin 3vmin 2vmin 3vmin;
+    width: 100%;
+    max-width: 28rem;
+    margin-inline: auto;
+
+    padding: 3vmin 3vmin 2vmin 3vmin;
     outline: 4px dashed var(--color-secondary);
     background-color: var(--color-background);
     text-align: center;
@@ -33,21 +37,23 @@
   }
 
   @media (min-width: 950px) {
-    width: calc(200% + var(--col-gap));
+    width: 100%;
     margin-left: 0;
     padding: 4rem 0;
 
     place-content: initial;
     justify-items: center;
+    background-color: var(--color-background);
+    z-index: 2;
 
-
+    // two columns for desktop
     .container {
       margin-inline: auto;
-      width: min(28rem, 100%);
+      width: 100%;
+      max-width: 40rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      justify-items: center;
-      transform: translateX(calc(var(--col-gap) / 3));
+      // padding: 7vmin 3vmin 3vmin 3vmin;
     }
 
     .link-downloadcss {

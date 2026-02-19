@@ -1,7 +1,7 @@
 #about {
   grid-area: about;
   
-  section:nth-child(2) {
+  section:nth-of-type(2) {
     position: relative;
 
     p:nth-of-type(2) {
@@ -54,10 +54,12 @@
       opacity: 0.8;
       content: "";
       z-index: -1;
+    }
+  }
 
-      @media (max-width: 35rem) {
-        transform: scale(2) translate(-25%, -25%);
-      }
+  @media (max-width: 950px) {
+    section:nth-child(2)::before {
+      transform: scale(2) translate (-24%, -25%);
     }
   }
 }
