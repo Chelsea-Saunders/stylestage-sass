@@ -16,7 +16,7 @@
     transform: translateY(2px);   
     background-color: $bg-hover;
 }
-
+}
 nav {
   height: 100px;
   width: 100%;
@@ -46,7 +46,6 @@ nav {
       @include nav-link($color-primary);
     }
   }
-}
 
 // Larger phone
 @media (min-width: 669px) {

@@ -1,5 +1,10 @@
 // stylelint-disable no-descending-specificity
+html{
+  scroll-behavior: smooth !important;
+}
+
 body {
+  scroll-behavior: smooth !important;
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-family);
