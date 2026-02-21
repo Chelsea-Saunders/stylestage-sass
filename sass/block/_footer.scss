@@ -1,13 +1,15 @@
 
 @use "../composition/logomark" as *;
+@use "../composition/theme" as *;
 
 // Styling for footer of page with class="page-footer"
 .page-footer {
+  position:relative;
   --logomark-height: 2em;
   --logomark-padding: 0;
 
   position: relative;
-  padding: 3rem 1rem;
+  padding: 2rem .5rem;
   background-color: var(--color-primary);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d2fbf7' fill-opacity='1'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-x;
@@ -25,13 +27,59 @@
     color: var(--color-primary);
     font-size: 3rem;
     content: "S";
+
+  
   }
 
-  p:first-child {
-    margin-top: 3rem;
+  .container{
+    display:grid;
+    grid-template-columns:auto auto;
+    ul{
+      display:flex;
+      flex-wrap:wrap;
+      grid-row:2;
+      grid-column:-1;
+      justify-content: center;
+      box-shadow: 3px 3px $color-primary;
+      padding-bottom:5px;
+      li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-radius:15px;
+        max-width: 100%;
+
+        a{
+          font-size: 1rem;
+          display:flex;
+          border-radius:25px;
+          padding:15px;
+          height:5rem;
+          width:5rem;
+          place-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  p{
+    grid-column:2;
+    grid-row:auto;
+    margin-top: 1rem;
     font-weight: var(--font-weight-strong);
     letter-spacing: 0.03em;
     text-align: center;
+  }
+
+  p:nth-child(1){
+    font-style:italic;
+    grid-column:3;
+    grid-row:1;
+    align-content: center;
+    justify-content:center;
+    box-shadow: -3px -3px $color-primary;
+
   }
 
   p a {
@@ -44,5 +92,49 @@
 
   .container > :last-child {
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: 669px) {
+  .page-footer {
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background-image: url("/waterfall.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% auto;
+      opacity: 0.3;
+
+      /* fades the top */
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.504) 30%,
+        black 100%
+      );
+    }
+
+    .container {
+      opacity: 1;
+      justify-content: center;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: start;
+
+      p {
+        &:nth-child(1) { grid-column: 1; grid-row: 1; }
+        &:nth-child(2) { grid-column: 2; grid-row: 1; }
+        &:nth-child(3) { grid-column: 3; grid-row: 1; }
+      }
+
+      ul {
+        grid-column: 4;
+        grid-row: 1;
+        align-self: end;
+      }
+    }
   }
 }
