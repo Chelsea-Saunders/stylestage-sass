@@ -95,12 +95,25 @@
   text-align: center;
   align-items: center;
 }
-#files .container a {
+#files .container a:not(.link-codepen) {
   border-radius: 50px;
 }
 #files .container a:hover {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  border-radius: 0;
+  border: 1px solid var(--color-secondary);
+  border-top: 0;
+  border-left: 0;
+}
+#files .container a.link-codepen {
+  background: none;
+  padding: 0.5rem 1rem;
+}
+#files .container a.link-codepen:hover {
+  border: 1px solid var(--color-secondary);
+  border-top: 0;
+  border-left: 0;
 }
 @media (min-width: 950px) {
   #files {
@@ -305,6 +318,11 @@ nav {
 .profile .container > a:focus {
   transform: translate(-0.15em, -0.15em);
   box-shadow: 0.3em 0.3em var(--color-secondary);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  border-top: 0;
+  border-left: 0;
 }
 [class^=link]:not(.link-codepen):focus,
 .profile .container > a:focus {
@@ -323,6 +341,12 @@ nav {
   display: block;
   margin-top: 1rem;
   font-size: var(--font-size-h4);
+}
+.link-codepen:hover {
+  background: none;
+  padding: 0.5rem 1rem;
+  transform: translate(0, 0, 0, 3px);
+  box-shadow: 0.3em 0.3em var(--color-secondary);
 }
 .link-codepen::before {
   position: absolute;
@@ -353,6 +377,21 @@ nav {
   fill: currentColor;
 }
 
+#about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines),
+#guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines),
+#contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines) {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--color-secondary);
+  text-decoration-thickness: 1px;
+}
+
+#about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover,
+#guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover,
+#contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover {
+  color: var(--color-accent);
+}
+
 :root {
   color-scheme: light dark;
   --color-primary: #4C6E91;
@@ -362,7 +401,7 @@ nav {
   --color-background-dark-mode: #1E242C;
   --color-text: #414d59;
   --color-light: #E6E9EB;
-  --color-accent: #9cd6e0;
+  --color-accent: #40c8e0;
   --color-gray: #666a6d;
   --color-links: #B7C4BE;
   --color-anchor: #4C6E91;
@@ -382,8 +421,8 @@ nav {
     --color-text: #E6E9EB;
     --color-anchor: #B7C4BE;
     --color-primary: #6B8FA3;
-    --color-primary-alt: #9cd6e0;
-    --color-accent: #9cd6e0;
+    --color-primary-alt: #40c8e0;
+    --color-accent: #40c8e0;
     --color-light: #050507;
   }
 }
