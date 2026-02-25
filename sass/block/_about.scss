@@ -1,5 +1,14 @@
 #about {
   grid-area: about;
+
+  & h2,
+  & h3 {
+    font-family: var(--font-subheader);
+  }
+
+  & p {
+    font-family: var(--font-body);
+  }
   
   section:nth-of-type(2) {
     position: relative;
@@ -17,49 +26,878 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin: 1rem 0 2rem;
-      padding: 0;
+      position: relative;
       list-style: none;
+      padding: 12px;
+      margin: 12px 0;
+      overflow: visible;
+      border-radius: 14px;
+      gap: 10px;
+      transition: transform 0.2s ease, filter 0.2s ease;
 
       li {
-        margin: 0.25em;
-        padding: 0.25em 0.5em;
-        background-color: var(--color-light);
-      }
-    }
+        position: relative;
+        margin: 10px 0;
+        padding: 8px 15px;
+        border-radius: 25px;
+        text-align: center;
+        z-index: 0;
 
-    &::before {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      width: 100%;
-      height: 0;
-      padding-bottom: 100%;
-      transform: translate(-50%, -50%);
-      transition: 300ms transform ease-in;
-      background-image: radial-gradient(
-        rgba(255, 0, 0, 0) 20%,
-        #b3f8f1 20%,
-        #b3f8f1 25%,
-        rgba(255, 0, 0, 0) 25%,
-        rgba(255, 0, 0, 0) 30%,
-        #b3f8f1 30%,
-        #b3f8f1 40%,
-        rgba(255, 0, 0, 0) 40%,
-        rgba(255, 0, 0, 0) 45%,
-        #b3f8f1 45%,
-        #b3f8f1 50%,
-        rgba(255, 0, 0, 0) 50%
-      );
-      opacity: 0.8;
-      content: "";
-      z-index: -1;
+        &:hover {
+          z-index: 2;
+          // transform: translateY(-2px) scale(1.25);
+          filter: brightness(1.06);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 120px;
+          height: 32px;
+          border-radius: 12px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: -1;
+        }
+
+        &:hover::after {
+          opacity: 0.9;
+        }
+      }
+      // flex 
+      li:nth-child(1) {
+        gap: 10px;
+        // transform: translate(-50%, -48%);
+
+        &::after {
+          background: linear-gradient(
+            90deg,
+            rgba(54, 164, 168, 0.9), 
+            rgba(138, 136, 136, 0.9)
+          );
+          animation: flex 1.8s ease-in-out infinite alternate;
+          animation-play-state: paused;
+        }
+        &:hover::after {
+          animation-play-state: running;
+          opacity: 0.9;
+        }
+      }
+      
+      // grid
+      li:nth-child(2)::after {
+        background: 
+          linear-gradient(rgba(0, 0, 0, 0.787) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.786) 1px, transparent 1px);
+        background-size: 18px 18px;
+        background-position: 0 0, 0 0;
+        animation: grid 2.2s linear infinite;
+        animation-play-state: paused;
+
+        &:hover::after {
+          animation-play-state: running;
+          opacity: 0.9;
+        }
+      }
+
+      // variable color shift
+      li:nth-child(3) {
+        --demo: 0;
+
+        &:hover {
+          --demo: 1;
+        }
+
+        &::after {
+          left: 0;
+          top: 0;
+          transform: none;
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          opacity: calc(0.0 + var(--demo) * 0.85);
+          transition: opacity 180ms ease;
+
+          background:
+            radial-gradient(circle at 20% 30%, rgb(54, 164, 168), transparent 55%),
+            repeating-linear-gradient(
+              90deg,
+              rgb(138, 136, 136) 0 1px,
+              transparent 1px 3px
+            );
+            background-size: auto, 18px 100%;
+            animation: variableShift 650ms steps(2) infinite;
+            animation-play-state: paused;
+        }
+        &:hover::after {
+          animation-play-state: running;
+        }
+      }
+
+      // @supports
+      li:nth-child(4) {
+        position: relative;
+        transition: color 0.2s ease;
+
+        &:hover::before {
+          content:"@supports: checking...";
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          margin: 0;
+          font-size: 0.85rem;
+          opacity: 0.75;
+          margin-bottom: 6px;
+          pointer-events: none;
+          color: black;
+        }
+
+        &:hover {
+          color: transparent;
+        }
+      }
+      @supports (selector(:has(*))) {
+        li:nth-child(4):hover::before {
+        content:"@supports: :has() supported ✅";
+        }
+      }
+
+      // gradients
+      li:nth-child(5)::after {
+        background: linear-gradient(120deg, rgba(54, 164, 168, 0.9), rgba(138, 136, 136, 0.9), rgba(255,255,255,0.8), rgba(54, 164, 168, 0.9));
+        background-size: 200% 100%;
+        animation: gradient 1.6s linear infinite;
+        animation-play-state: paused;
+      }
+      li:nth-child(5):hover::after {
+        animation-play-state: running;
+        opacity: 0.9;
+      }
+
+      // animation: pulsing dot
+      li:nth-child(6)::after {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(54, 164, 168, 0.65);
+        box-shadow: 0 0 0 0 rgba(138, 136, 136, 0.9);
+        animation: pulse 1.5s ease-out infinite;
+      }
+
+      // 3d transform
+      li:nth-child(7) {
+        perspective: 600px;
+        transform-style: preserve-3d;
+
+        &::after {
+          background: rgba(255,255,255,0.18);
+          transform: translate(-50%, -50%) rotateY(0deg);
+          transform-origin: center;
+          transition: transform 0.5s ease;
+          width: 120%;
+          height: 100%;
+        }
+
+        &:hover::after {
+          transform: translate(-50%, -50%) rotateY(35deg);
+          box-shadow: -8px 6px 14px rgba(0, 0, 0, 0.409);
+        }
+      }
+
+      // object-fit
+      li:nth-child(8) {
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+
+        // container layer
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 3px;             //creates an inner plate
+          border-radius: inherit;
+          box-shadow: -5px 3px 15px rgba(0, 0, 0, 0.298);
+
+          background: rgba(255,255,255,0.18);
+          opacity: 0;
+          transform: scale(0,98);
+          transition: opacity 220ms ease, transform 260ms ease;
+
+          z-index: -1;
+        }
+
+        // moving object layer
+        &::after {
+          content: "";
+          position: absolute;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+
+          // start position (left side)
+          left: -10px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: radial-gradient( 
+            circle,
+            rgba(54, 164, 168, 0.9),
+            rgba(138, 136, 136, 0.85) 60%
+          );
+          opacity: 0;
+          transition: left 420ms ease, opacity 220ms ease;
+          z-index: -1;              // behind text but above ::before visually
+        }
+
+        &:hover::before {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        &:hover::after {
+          opacity: 1;
+          left: calc(100% - 38px);  // move to right side
+          animation: pop 480ms ease-out;
+        }
+      }
+
+      // :focus-within
+      li:nth-child(9):hover {
+        transform: scale(1.2);
+        transition: transform 0.2s ease;
+      }
+
+      // calc()
+      li:nth-child(10) {
+        overflow: visible;
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: 
+            linear-gradient(
+              135deg,
+              transparent 35%,
+              rgba(54, 164, 168, 0.9) 35% 55%,
+              transparent 55%
+            );
+            transform: translateX(calc(-20%));
+            transition: transform 0.5s ease;
+        }
+
+        &:hover::after {
+          transform: translateX(calc(20%));
+        }
+      }
+
+      // min()/mac()/clamp()
+      li:nth-child(11) {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          height: 30px;
+          width: clamp(60px, 12vw, 140px);
+          transform: translate(-50%, -50%);
+          border-radius: 999px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          background: rgba(54, 164, 168, 0.9);
+          pointer-events: none;
+        }
+
+        &:hover::after {
+          opacity: 0.9;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: calc(50% - (clamp(60px, 12vw, 140px) / 2));
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          transform: translateY(-50%);
+          background: rgba(138, 136, 136, 0.9);
+          opacity: 0;
+          transition: opacity 0.2s ease, left 0.35s ease;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          left: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
+        }
+      }
+
+      // viewport units
+      li:nth-child(12)::after {
+        background: rgba(54, 164, 168, 0.9);
+        animation: viewport 2.5s ease-in-out infinite alternate;
+      }
+
+      // scroll-margin/scroll-snap
+      li:nth-child(13) {
+        position: relative;
+        overflow: hidden;
+        // text-shadow: none;
+        isolation: isolate;
+        transition: color 0.2s ease;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: auto;
+          top: auto;
+          transform: none;
+          width: auto;
+          height: auto;
+          inset: 0;
+          border-radius: inherit;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 2;
+
+          background: 
+            linear-gradient(
+              90deg,
+              rgba(54,164,168,0.9) 0% 33%,
+              transparent 33% 66%,
+              rgba(54,164,168,0.9) 66% 100%
+            );
+        }
+
+        &::before {
+          content: "snap area • padding • margin";
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          border-radius: inherit;
+          // transform: translate(-50%, -50%);
+          font-size: 0.72rem;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          color: rgba(81, 79, 79, 0.9);
+          z-index: 3;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+        }
+        
+        &:hover {
+          color: transparent;
+          text-shadow: none;
+        }
+
+        &:hover::after,
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      // position: sticky
+      li:nth-child(14) {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        transition: color 0.2s ease;
+
+        // hide origional text on hover
+        &:hover {
+          // color: transparent;
+          transform: none;
+          filter: none;
+        }
+
+        // scrolling layer
+        &::after {
+          content: "";
+          position: absolute;
+
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+
+          transform: none;
+
+          // inset: 0;
+          border-radius: inherit;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 1;
+
+          // looks like scrolling
+          background:  
+          // sticky header (stays put)
+            linear-gradient(
+              rgba(255,255,255,0.18), 
+              rgba(255,255,255,0.18)),
+              // scrolling content (moves)
+            repeating-linear-gradient(
+              180deg,
+              rgba(54, 164, 168, 0.9) 0 8px,
+              rgba(138, 136, 136, 0.9) 8px 16px
+            );
+
+          // size and position for scrolling effect
+          background-size: 100% 26px, auto;
+          background-repeat: no-repeat, repeat;
+          background-position: 0 0, 0 26px;
+
+          animation: stickyScroll 2s linear infinite;
+          animation-play-state: paused;
+          will-change: background-position;
+        }
+
+        // sticky header layer
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 26px;
+
+          display: grid;
+          place-items: center;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 2;
+
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.02rem;
+          
+          color: rgba(255,255,255,0.95);
+          text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+        }
+
+        &:hover::after, 
+        &:hover::before {
+          opacity: 1;
+        }
+
+        &:hover::after {
+          animation-play-state: running;
+        }
+      }
+
+      // two-value
+      li:nth-child(15) {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: transparent;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          transform: none;
+          border-radius: inherit;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 1;
+
+          background: 
+          // baseline layer
+            linear-gradient(rgba(255, 255, 255, 0.2), rgba(255,255,255,0.2)),
+            // container tint
+            linear-gradient(rgba(54, 164, 168, 0.394), rgba(255,255,255,0.55)),
+            // 3 items
+            linear-gradient(rgba(0, 0, 0, 0.999), rgba(138, 136, 136, 0.55)),
+            linear-gradient(rgba(0, 0, 0, 0.999), rgba(138, 136, 136, 0.55)),
+            linear-gradient(rgba(0, 0, 0, 0.999), rgba(138, 136, 136, 0.55));
+
+            // sizes
+          background-size: 
+          70% 2px, 
+          88% 70%, 
+          12px 12px, 
+          12px 12px,
+          12px 12px; 
+
+          background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+
+          // starting position 
+          background-position: 
+            50% 62%,
+            50% 50%,
+            44% 50%,
+            50% 50%,
+            56% 50%;
+
+          animation: innerFlex 900ms ease-in-out infinite alternate;
+          animation-play-state: paused;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.01rem;
+          white-space: nowrap;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 2;
+
+          color: white;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+        }
+
+        &:hover::after, 
+        &:hover::before {
+          opacity: 1;
+        }
+
+        &:hover::after {
+          animation-play-state: running;
+        }
+      }
+
+      // expanded media
+      li:nth-child(16) {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        transition: color 0.2s ease;
+
+         &:hover {
+          color: transparent;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          transform: none;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 1;
+
+          // layer 1 (ruler)
+          background: 
+            repeating-linear-gradient(
+              90deg,
+              rgba(255,255,255,0.5) 0 6px,
+              transparent 6px 12px 
+            ),
+
+            // layer 2 (3 breakpoints)
+            linear-gradient(rgba(54,164,168,0.95), rgba(54,164,168,0.95)),
+            linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+            linear-gradient(rgba(54, 126, 168, 0.9), rgba(54, 126, 168, 0.9));
+
+          background-size: 
+            auto,
+            4px 70%,
+            4px 70%,
+            4px 70%;
+          
+          background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+
+          // positions for screen sizes
+          background-position:
+            0 50%,
+            20% 50%,
+            50% 50%,
+            80% 50%;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          white-space: nowrap;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.01rem;
+          color: white;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        &:hover::after, 
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      // variable fonts
+      li:nth-child(17) {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: transparent;
+        }
+
+        // slider / track
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          transform: none;
+          border-radius: inherit;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 1;
+
+          background: 
+            // track
+            linear-gradient(rgba(255,255,255,0.18), rgba(255,255,255,0.18)),
+            // knob
+            radial-gradient(circle, rgba(54,164,168,0.9) 0 60%, transparent 61%);
+
+          background-size: 
+            87% 4px, 
+            14px 14px;
+
+          background-repeat: no-repeat, no-repeat;
+
+          // start position 
+          background-position: 
+            50% 70%,
+            30% 70%;
+
+          animation: vfKnob 1.8s ease-in-out infinite alternate;
+          animation-play-state: paused;
+        }
+
+        // label (changes weight)
+        &::before {
+          content: "variable fonts";
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          font-size: 1rem;
+          letter-spacing: 0.01rem;
+          white-space: nowrap;
+
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          pointer-events: none;
+          z-index: 2;
+
+          color: rgba(81, 79, 79, 0.9);
+          // text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+
+          font-weight: 300;
+          animation: vfAxis 1.8s ease-in-out infinite alternate;
+          animation-play-state: paused;
+        }
+
+        &:hover::after,
+        &:hover::before {
+          opacity: 1;
+          animation-play-state: running;
+        }
+      }
     }
   }
 
+  // flex animation
+  @keyframes flex {
+    from {
+      transform: translate(-50%, -48%) translateX(0);
+    }
+    to {
+      transform: translate(-50%, -48%) translateX(-18px);
+    }
+  }
+  // grid animation
+  @keyframes grid {
+    from {
+      background-position: 0 0, 0 0;
+    }
+    to {
+      background-position: 18px 18px, 18px 18px;
+    }
+  }
+  // custom variable
+  @keyframes variableShift {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: 0 0, 6px 0;
+    }
+  }
+  @keyframes gradient {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 200% 50%;
+    }
+  }
+  @keyframes pulse {
+    to {
+      box-shadow: 0 0 0 16px rgba(138, 136, 136, 0);
+    }
+  }
+  @keyframes pop {
+    0% {
+      transform: translateY(-50%) scale(1);
+    }
+    30% {
+      transform: translateY(-50%) scale(1.4);
+    }
+    50% {
+      transform: translateY(-50%) scale(1);
+    }
+    70% {
+      transform: translateY(-50%) scale(1.4);
+    }
+    100% {
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  // :focus-within
+  @keyframes focusPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  // viewport
+  @keyframes viewport {
+    from {
+      // --shift: 0vw;
+      transform: translate(-80%, -50%) translateY(0);
+    }
+    to {
+      // --shift: 6vw;
+      transform: translate(-50%, -50%) translateY(2vw);
+    }
+  }
+
+  // sticky scroll
+  @keyframes stickyScroll {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 0, 0 -32px;
+    }
+  }
+
+  @keyframes innerFlex {
+    // items closer together
+    from {
+      background-position: 
+      50% 62%,
+      50% 50%,
+      44% 50%,
+      50% 50%,
+      56% 50%;
+    }
+    // items farther apart
+    to {  
+      background-position: 
+      50% 62%,
+      50% 50%,
+      35% 50%,
+      50% 50%,
+      66% 50%;
+    }
+  }
+
+  @keyframes vfAxis {
+    from {
+      font-variation-settings: "wght" 200;
+    }
+    to {
+      font-variation-settings: "wght" 900;
+    }
+  }
+  @keyframes vfKnob {
+    from {
+      background-postion: 50% 70%, 30% 70%;
+    }
+    to {
+      background-position: 50% 70%, 70% 70%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    li:nth-child(16):hover::before {
+      content: "Mobile: (max-width: 640px)";
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    li:nth-child(16):hover::before {
+      content: "tablet: 640 - 950px";
+    }
+  }
   @media (max-width: 950px) {
     section:nth-child(2)::before {
       transform: scale(2) translate (-24%, -25%);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    li:nth-child(16):hover::before {
+      content: "desktop: 950px and larger screens";
     }
   }
 }

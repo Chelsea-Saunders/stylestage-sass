@@ -69,9 +69,12 @@ $font-sizes: (
   @each $key, $color in $colors {
     --color-#{$key}: #{$color};
   }
+  --font-header: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-subheader: "Skranji", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;  
 
   --color-anchor: #{$link-color};
-  --font-family: "Baloo 2", sans-serif;
+  --font-family: var(--font-body);
   --font-weight-strong: #{$font-weight-strong};
 
   @each $key, $size in $font-sizes {

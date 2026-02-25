@@ -1,5 +1,14 @@
 #guidelines {
   grid-area: guidelines;
+
+  & h2,
+  & h3 {
+    font-family: var(--font-subheader);
+  }
+
+  & p {
+    font-family: var(--font-body);
+  }
   
   h3 {
     display: inline-block;
