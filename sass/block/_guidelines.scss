@@ -1,5 +1,6 @@
 #guidelines {
   grid-area: guidelines;
+  position: relative;
   
   h3 {
     display: inline-block;
@@ -39,5 +40,30 @@
 
   .container > a {
     align-self: center;
+  }
+}
+
+@media (min-width: 950px) {
+  #guidelines::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    width: 420px;
+    height: 420px;
+
+    left: 0%;
+    top: -30%;
+
+    transform: translateY(-50%);
+
+    background-image: url("/images/window.png");
+    background-repeat: no-repeat;
+    background-position: 
+      left 2rem top 3rem,
+      right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.5;
   }
 }

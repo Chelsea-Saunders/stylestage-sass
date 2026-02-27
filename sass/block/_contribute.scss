@@ -27,3 +27,50 @@
     }
   }
 }
+
+@media (min-width: 950px) {
+  #contribute::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    width: 420px;
+    height: 420px;
+
+    left: 50%;
+    top: -15%;
+
+    transform: translateY(-50%);
+
+    background-image: url("/images/snowfox.png");
+    background-repeat: no-repeat;
+    background-position: 
+      left 2rem top 3rem,
+      right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.55;
+  }
+  #contribute::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    width: 420px;
+    height: 420px;
+
+    left: 0%;
+    top: 55%;
+
+    transform: translateY(-50%);
+
+    background-image: url("/images/snowflakes.png");
+    background-repeat: no-repeat;
+    background-position: 
+      left 2rem top 3rem,
+      right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.40;
+  }
+}

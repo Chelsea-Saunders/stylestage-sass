@@ -25,7 +25,6 @@
     #main > .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        // column-gap: 3rem;
         align-items: start;
         width: 100%;
         max-width: 70rem;
@@ -40,6 +39,7 @@
         grid-column: 1;
         grid-row: 2;
         margin-top: -10rem;
+        
     }
     // right column
     #contribute {
@@ -76,8 +76,10 @@
             margin-top: -30rem;
         }
     }
-    // divider line
-    #main > .container::before {
+
+    #main > .container {
+        //divider line
+        &::before {
         content: "";
         position: absolute;
         left: 50%;
@@ -87,5 +89,33 @@
         background: var(--color-primary);
         opacity: 0.9;
         transform: translateX(-50%);
+        }
+
+        // #about image
+        &::after {
+            content: "";
+            position: absolute;
+            width: 375px;
+            height: 375px;
+
+            left: 55%;
+            top: 25rem;
+
+            transform: translateY(-50%);
+
+            background-image: url("/images/landscape.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: top center;
+
+            opacity: 0.75;
+            pointer-events: none;
+            z-index: 10;
+            }
+
+            > * {
+            position: relative; 
+            z-index: 1;
+            }
     }
 }

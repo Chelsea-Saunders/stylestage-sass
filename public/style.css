@@ -88,9 +88,11 @@ body::before {
   background-image: url("/images/snowflake-12.svg"), url("/images/snowflake-2.svg"), url("/images/snowflake-10.svg"), url("/images/snowflake-4.svg"), url("/images/snowflake-5.svg"), url("/images/snowflake-6.svg");
   background-repeat: no-repeat;
   background-size: 42px 42px, 34px 34px, 26px 26px, 40px 40px, 30px 30px, 22px 22px;
-  background-position: 10vw -15vh, 28vw -45vh, 52vw -25vh, 70vw -60vh, 84vw -30vh, 92vw -75vh;
+  background-position: 10vw -65vh, 28vw -45vh, 52vw -25vh, 70vw -55vh, 84vw -35vh, 92vw -105vh;
   opacity: 0.35;
-  animation: snow-falling-close 18s linear infinite;
+  animation: snow-falling-close 30s linear infinite;
+  animation-delay: -7s;
+  animation-duration: 30s;
 }
 
 body::after {
@@ -101,10 +103,12 @@ body::after {
   z-index: 9998;
   background-image: url("/images/snowflake-7.svg"), url("/images/snowflake-8.svg"), url("/images/snowflake-9.svg"), url("/images/snowflake-3.svg"), url("/images/snowflake-11.svg"), url("/images/snowflake-1.svg");
   background-repeat: no-repeat;
-  background-size: 16px 16px, 14px 14px, 12px 12px, 18px 18px, 12px 12px, 10px 10px;
-  background-position: 6vw -30vh, 20vw -80vh, 44vw -55vh, 62vw -95vh, 78vw -40vh, 88vw -110vh;
+  background-size: 16px 16px, 14px 14px, 12px 12px, 18px 18px, 15px 15px, 10px 10px;
+  background-position: 6vw -30vh, 20vw -75vh, 44vw -55vh, 62vw -90vh, 78vw -40vh, 88vw -110vh;
   opacity: 0.25;
-  animation: snow-falling-far 15s linear infinite;
+  animation: snow-falling-far 20s linear infinite;
+  animation-delay: -3s;
+  animation-duration: 20s;
 }
 
 /* Make images easier to work with */
@@ -123,18 +127,18 @@ select {
 
 @keyframes snow-falling-close {
   from {
-    background-position: 0 -200px, 140px -500px, 260px -800px;
+    background-position: 10vw -15vh, 28vw -45vh, 52vw -25vh, 70vw -60vh, 84vw -30vh, 92vw -75vh;
   }
   to {
-    background-position: 14vw 115vh, 24px 115px, 56px 115px, 66vw 115vh, 88vw 115vh, 96vw 115vh;
+    background-position: 14vw 115vh, 24vw 115vh, 56vw 115vh, 66vw 115vh, 88vw 115vh, 96vw 115vh;
   }
 }
 @keyframes snow-falling-far {
   from {
-    background-position: 60px -800px, 220px -1200px, 20px -1600px;
+    background-position: 6vw -10vh, 20vw -140vh, 44vw -60vh, 62vw -220vh, 78vw -30vh, 88vw -180vh;
   }
   to {
-    background-position: 10vw 115vh, 16px 115px, 48px 115px, 58vw 115vh, 82vw 115vh, 92vw 115vh;
+    background-position: 10vw 115vh, 16vw 115vh, 48vw 115vh, 58vw 115vh, 82vw 115vh, 92vw 115vh;
   }
 }
 /* Remove all animations and transitions for people that prefer not to see them */
@@ -954,27 +958,27 @@ blockquote::after {
     background-position: 50% 70%, 70% 70%;
   }
 }
+
 @media (max-width: 640px) {
-  #about li:nth-child(16):hover::before {
+  li:nth-child(16):hover::before {
     content: "Mobile: (max-width: 640px)";
   }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
-  #about li:nth-child(16):hover::before {
+  li:nth-child(16):hover::before {
     content: "tablet: 640 - 950px";
   }
 }
-@media (max-width: 950px) {
-  #about section:nth-child(2)::before {
-    transform: scale(2) translate -24%, -25%;
+@media (min-width: 950px) {
+  section:nth-child(2)::before {
+    transform: scale(2) translate(-24%, -25%);
   }
 }
 @media (min-width: 1025px) {
-  #about li:nth-child(16):hover::before {
+  li:nth-child(16):hover::before {
     content: "desktop: 950px and larger screens";
   }
 }
-
 #contribute {
   grid-area: contribute;
 }
@@ -998,6 +1002,41 @@ blockquote::after {
   }
 }
 
+@media (min-width: 950px) {
+  #contribute::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 420px;
+    height: 420px;
+    left: 50%;
+    top: -15%;
+    transform: translateY(-50%);
+    background-image: url("/images/snowfox.png");
+    background-repeat: no-repeat;
+    background-position: left 2rem top 3rem, right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.55;
+  }
+
+  #contribute::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 420px;
+    height: 420px;
+    left: 0%;
+    top: 55%;
+    transform: translateY(-50%);
+    background-image: url("/images/snowflakes.png");
+    background-repeat: no-repeat;
+    background-position: left 2rem top 3rem, right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.4;
+  }
+}
 #files {
   display: grid;
   place-content: center;
@@ -1118,6 +1157,7 @@ blockquote::after {
 
 #guidelines {
   grid-area: guidelines;
+  position: relative;
 }
 #guidelines h3 {
   display: inline-block;
@@ -1158,6 +1198,24 @@ blockquote::after {
   align-self: center;
 }
 
+@media (min-width: 950px) {
+  #guidelines::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 420px;
+    height: 420px;
+    left: 0%;
+    top: -30%;
+    transform: translateY(-50%);
+    background-image: url("/images/window.png");
+    background-repeat: no-repeat;
+    background-position: left 2rem top 3rem, right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.5;
+  }
+}
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
@@ -1599,5 +1657,25 @@ nav a:hover {
     background: var(--color-primary);
     opacity: 0.9;
     transform: translateX(-50%);
+  }
+  #main > .container::after {
+    content: "";
+    position: absolute;
+    width: 375px;
+    height: 375px;
+    left: 55%;
+    top: 25rem;
+    transform: translateY(-50%);
+    background-image: url("/images/landscape.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: 10;
+  }
+  #main > .container > * {
+    position: relative;
+    z-index: 1;
   }
 }
