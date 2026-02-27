@@ -169,12 +169,14 @@ h4 {
 h1 {
   font-size: var(--font-size-h1);
   font-size: clamp(2rem, 7vw, var(--font-size-h1));
+  font-family: var(--font-header);
 }
 
 h2 {
   font-size: var(--font-size-h2);
   font-size: clamp(2rem, 4vw, var(--font-size-h2));
   text-align: center;
+  font-family: var(--font-subheader);
 }
 
 #main h2 {
@@ -183,14 +185,17 @@ h2 {
   color: var(--color-background);
   padding: 0.25em 0.5em;
   margin-bottom: 1.5rem;
+  font-family: var(--font-subheader);
 }
 
 h3 {
   font-size: var(--font-size-h3);
+  font-family: var(--font-subheader);
 }
 
 h4 {
   font-size: var(--font-size-h4);
+  font-family: var(--font-subheader);
 }
 
 p,
@@ -200,6 +205,7 @@ li {
 
 p {
   margin: 0 0 1rem;
+  font-family: var(--font-body);
 }
 
 article .container > ul:not(.features) > li + li,
@@ -280,12 +286,6 @@ blockquote::after {
 
 #about {
   grid-area: about;
-}
-#about h2, #about h3 {
-  font-family: var(--font-subheader);
-}
-#about p {
-  font-family: var(--font-body);
 }
 #about section:nth-of-type(2) {
   position: relative;
@@ -927,12 +927,6 @@ blockquote::after {
 #contribute {
   grid-area: contribute;
 }
-#contribute h2, #contribute h3 {
-  font-family: var(--font-subheader);
-}
-#contribute p {
-  font-family: var(--font-body);
-}
 #contribute > .container {
   margin-bottom: 3rem;
 }
@@ -1073,12 +1067,6 @@ blockquote::after {
 
 #guidelines {
   grid-area: guidelines;
-}
-#guidelines h2, #guidelines h3 {
-  font-family: var(--font-subheader);
-}
-#guidelines p {
-  font-family: var(--font-body);
 }
 #guidelines h3 {
   display: inline-block;
