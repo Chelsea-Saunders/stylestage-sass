@@ -65,17 +65,11 @@ body::before {
     30px 30px, 
     22px 22px;
   background-position: 
-    10vw -65vh,
-    28vw -45vh,
-    52vw -25vh,
-    70vw -55vh,
-    84vw -35vh, 
-    92vw -105vh;
+    initial;
 
   opacity: 0.35;
   animation: snow-falling-close 30s linear infinite;
   animation-delay: -7s;
-  animation-duration: 30s;
 }
 
 // smaller, further snowflakes
@@ -97,22 +91,16 @@ body::after {
   background-size: 
     16px 16px, 
     14px 14px, 
-    12px 12px, 
+    17px 17px, 
     18px 18px, 
-    15px 15px, 
-    10px 10px;
+    20px 20px, 
+    15px 15px;
   background-position: 
-    6vw -30vh,
-    20vw -75vh,
-    44vw -55vh,
-    62vw -90vh,
-    78vw -40vh, 
-    88vw -110vh;
+    initial;
 
   opacity: 0.25;
   animation: snow-falling-far 20s linear infinite;
   animation-delay: -3s;
-  animation-duration: 20s;
  }
 
 /* Make images easier to work with */
@@ -132,12 +120,12 @@ select {
 @keyframes snow-falling-close {
   from {
     background-position: 
-      10vw -15vh,
+      10vw -65vh,
       28vw -45vh,
       52vw -25vh,
-      70vw -60vh,
-      84vw -30vh, 
-      92vw -75vh;
+      70vw -55vh,
+      84vw -35vh, 
+      92vw -105vh;
   }
   to {
     background-position: 
@@ -152,7 +140,7 @@ select {
 @keyframes snow-falling-far {
   from {
     background-position: 
-      6vw -10vh,
+      6vw -30vh,
       20vw -140vh,
       44vw -60vh,
       62vw -220vh,
@@ -161,12 +149,12 @@ select {
   }
   to {
     background-position: 
-      10vw 115vh, 
-      16vw 115vh, 
-      48vw 115vh,
-      58vw 115vh,
-      82vw 115vh,
-      92vw 115vh;
+      6vw -30vh,
+      20vw -75vh,
+      44vw -55vh,
+      62vw -90vh,
+      78vw -40vh, 
+      88vw -110vh;
   }
 }
 
