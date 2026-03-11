@@ -1011,11 +1011,12 @@ blockquote::after {
     left: 50%;
     top: -15%;
     transform: translateY(-50%);
-    background-image: url("/images/snowfox.png");
+    background-image: url("/images/snowflake-20.svg");
     background-repeat: no-repeat;
-    background-position: left 2rem top 3rem, right 1rem bottom 4rem;
+    background-position: left 6rem top 3rem, right 1rem bottom 4rem;
     background-size: 320px 300px;
-    opacity: 0.55;
+    opacity: 0.5;
+    animation: pulseSnowflake 4s ease-in-out infinite;
   }
 
   #contribute::before {
@@ -1032,7 +1033,23 @@ blockquote::after {
     background-repeat: no-repeat;
     background-position: left 2rem top 3rem, right 1rem bottom 4rem;
     background-size: 320px 300px;
-    opacity: 0.4;
+    opacity: 0.2;
+    animation: pulseSnowflake 3s ease-in-out infinite;
+  }
+}
+@keyframes pulseSnowflake {
+  0% {
+    transform: translateY(-50%) sclae(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    opacity: 0.3;
+    rotate: 6deg;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.2;
   }
 }
 #files {
@@ -1160,7 +1177,7 @@ blockquote::after {
 #guidelines h3 {
   display: inline-block;
   transform: rotate(-8deg) translateX(-10%);
-  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(to right, var(--color-primary), var(--color-links));
 }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   #guidelines h3 {
@@ -1207,11 +1224,27 @@ blockquote::after {
     left: 0%;
     top: -30%;
     transform: translateY(-50%);
-    background-image: url("/images/window.png");
+    background-image: url("/images/blue-snowflake.png");
     background-repeat: no-repeat;
     background-position: left 2rem top 3rem, right 1rem bottom 4rem;
     background-size: 320px 300px;
-    opacity: 0.5;
+    opacity: 0.15;
+    animation: pulseSnowflake 3s ease-in-out infinite;
+  }
+}
+@keyframes pulseSnowflake {
+  0% {
+    transform: translateY(-50%) sclae(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    opacity: 0.3;
+    rotate: -8deg;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.2;
   }
 }
 header {
@@ -1657,18 +1690,34 @@ nav a:hover {
     width: 375px;
     height: 375px;
     left: 55%;
-    top: 25rem;
+    top: 30rem;
     transform: translateY(-50%);
-    background-image: url("/images/landscape.png");
+    background-image: url("/images/snowflake-4.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top center;
-    opacity: 0.75;
+    opacity: 0.2;
     pointer-events: none;
     z-index: 10;
+    animation: pulseSnowflake 3500ms ease-in-out infinite;
   }
   #main > .container > * {
     position: relative;
     z-index: 1;
+  }
+}
+@keyframes pulseSnowflake {
+  0% {
+    transform: translateY(-50%) sclae(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    opacity: 0.3;
+    rotate: 5deg;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.2;
   }
 }
