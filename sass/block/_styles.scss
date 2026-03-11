@@ -62,20 +62,14 @@
   }
   @keyframes floating-flakes {
     0% {
-      // left: 10%;
-      // top: 62%;
       transform: translate(-50%, -50%) translateX(-80px) translateY(20px) scale(0.7) rotate(0deg);
       opacity: 0.09;
     }
     50% {
-      // top: 52%;
-      // left: 38%;
       transform: translate(-50%, -60%) translateX(0px) translateY(-30px) scale(1.15) rotate(-18deg);
       opacity: 0.3;
     }
     100% {
-      // left: 90%;
-      // top: 62%;
       transform: translate(-50%, -50%) translateX(80px) translateY(20px) scale(0.9) rotate(0deg);
       opacity: 0.09;
     }
