@@ -25,6 +25,20 @@
     & > a {
       color: var(--color-light);
       text-decoration: underline;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 0 transparent;
+      display: inline-block;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow:
+         0.15em 0.15em var(--color-links);
+        text-decoration: none;
+        // background-color: var(--color-light);
+        color: var(--color-links);
+        // padding: 0.25rem
+      }
     }
   }
   .container > p:nth-of-type(1) {

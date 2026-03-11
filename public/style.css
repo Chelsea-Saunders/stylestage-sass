@@ -1150,6 +1150,16 @@ blockquote::after {
 .page-footer .container > p > a {
   color: var(--color-light);
   text-decoration: underline;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 transparent;
+  display: inline-block;
+}
+.page-footer .container > p > a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0.15em 0.15em var(--color-links);
+  text-decoration: none;
+  color: var(--color-links);
 }
 .page-footer .container > p:nth-of-type(1) {
   grid-row: 1;
