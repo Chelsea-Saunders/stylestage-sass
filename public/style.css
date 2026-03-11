@@ -1128,46 +1128,87 @@ blockquote::after {
 }
 
 .page-footer {
-  --logomark-height: 2em;
-  --logomark-padding: 0;
-  position: relative;
   padding: 3rem 1rem;
   background-color: var(--color-primary);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d2fbf7' fill-opacity='1'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: center -34px;
   color: var(--color-light);
+  justify-items: center;
+  align-items: center;
 }
-.page-footer::before {
-  display: inline-grid;
-  min-height: var(--logomark-height);
-  padding: var(--logomark-padding);
-  border: 0.16em solid var(--color-primary);
-  box-shadow: 0.12em 0.12em var(--color-secondary);
-  place-content: center;
-  position: absolute;
-  left: 50%;
-  width: 2em;
-  transform: translate(-50%, -100%);
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  font-size: 3rem;
-  content: "S";
+.page-footer .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  align-items: start;
+  justify-items: start;
+  margin: 0;
+  padding: 2rem;
 }
-.page-footer p:first-child {
-  margin-top: 3rem;
-  font-weight: var(--font-weight-strong);
-  letter-spacing: 0.03em;
+.page-footer .container > p {
+  grid-column: 1;
+}
+.page-footer .container > p > a {
+  color: var(--color-light);
+  text-decoration: underline;
+}
+.page-footer .container > p:nth-of-type(1) {
+  grid-row: 1;
+}
+.page-footer .container > p:nth-of-type(2) {
+  grid-row: 2;
+}
+.page-footer .container > ul {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: start;
+  width: 100%;
+}
+.page-footer .container > ul > li {
+  width: 100%;
+}
+.page-footer .container > ul > li a {
+  display: block;
   text-align: center;
+  box-shadow: 0.15em 0.15em #a2a2a2;
+  border: 1px solid transparent;
+  height: 100%;
+  padding: 0.8rem 0 0.5rem 0;
 }
-.page-footer p a {
-  color: inherit;
+.page-footer .container > ul > li a:hover {
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  border-bottom: 1px solid var(--color-light);
+  border-right: 1px solid var(--color-light);
+  box-shadow: 0.15em 0.15em var(--color-links);
 }
-.page-footer ul {
-  grid-template-columns: repeat(auto-fit, minmax(12ch, auto));
-}
-.page-footer .container > :last-child {
-  margin-bottom: 0;
+@media (min-width: 640px) {
+  .page-footer .container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 3rem;
+  }
+  .page-footer .container > p:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .page-footer .container > p:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .page-footer .container > p:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 8rem;
+  }
+  .page-footer .container > ul {
+    grid-column: 3;
+    grid-row: 1;
+  }
 }
 
 #guidelines {
@@ -1687,9 +1728,9 @@ nav a:hover {
   #main > .container::after {
     content: "";
     position: absolute;
-    width: 375px;
-    height: 375px;
-    left: 55%;
+    width: 275px;
+    height: 275px;
+    left: 60%;
     top: 30rem;
     transform: translateY(-50%);
     background-image: url("/images/snowflake-4.svg");
