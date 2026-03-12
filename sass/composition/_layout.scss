@@ -1,3 +1,4 @@
+@use "../composition/theme" as *;
 // stylelint-disable no-descending-specificity
 html{
   scroll-behavior: smooth !important;
@@ -8,10 +9,10 @@ body {
   /* gradient added for bkgnd */
   background: linear-gradient(
     180deg,
-    #0f1c2a 0%,
-    #1e2f44 40%,
-    #2b4a63 70%,
-    #6b8fa3 100%
+    $color-gradient 0%,
+    $color-background 30%,
+    $color-background 70%,
+    $color-gradient 100%,
   );
 
   scroll-behavior: smooth !important;
