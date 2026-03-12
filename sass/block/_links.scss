@@ -43,6 +43,11 @@
   &:focus {
     transform: translate(-0.15em, -0.15em);
     box-shadow: 0.3em 0.3em var(--color-secondary);
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+    border-top: 0;
+    border-left: 0;
   }
 
   &:focus {
@@ -63,6 +68,13 @@
   display: block;
   margin-top: 1rem;
   font-size: var(--font-size-h4);
+
+  &:hover {
+    background: none;
+    padding: 0.5rem 1rem;
+    transform: translate(0, 0, 0, 3px);
+    box-shadow: 0.3em 0.3em var(--color-secondary);
+  }
 
   &::before {
     position: absolute;
@@ -93,4 +105,20 @@
     margin-right: 0.25em;
     fill: currentColor;
   }
+}
+
+// a links in articles
+#about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines), 
+#guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines), 
+#contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines) {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--color-secondary);
+  text-decoration-thickness: 1px;
+}
+
+#about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover, 
+#guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover, 
+#contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover {
+  color: var(--color-accent);
 }
