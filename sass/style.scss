@@ -1,5 +1,15 @@
 
+// reset + theme 
+@use "composition/theme";
+@use "composition/reset";
+@use "utilities/fonts";
 
+// typography + layout systems
+@use "composition/layout";
+@use "composition/logomark";
+@use "composition/typography";
+
+// components/blocks
 @use "block/about";
 @use "block/contribute";
 @use "block/files";
@@ -12,10 +22,7 @@
 @use "block/styles";
 @use "block/container";
 
-@use "utilities/fonts";
 
-@use "composition/layout";
-@use "composition/logomark";
-@use "composition/typography";
-@use "composition/theme";
-@use "composition/reset";
+
+
+

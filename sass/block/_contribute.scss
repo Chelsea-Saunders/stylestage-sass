@@ -27,3 +27,70 @@
     }
   }
 }
+
+@media (min-width: 950px) {
+  #contribute::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    width: 420px;
+    height: 420px;
+
+    left: 50%;
+    top: -15%;
+
+    transform: translateY(-50%);
+
+    background-image: url("/images/snowflake-20.svg");
+    background-repeat: no-repeat;
+    background-position: 
+      left 6rem top 3rem,
+      right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.5;
+
+    animation: pulseSnowflake 4s ease-in-out infinite;
+  }
+  #contribute::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+
+    width: 420px;
+    height: 420px;
+
+    left: 0%;
+    top: 55%;
+
+    transform: translateY(-50%);
+
+    background-image: url("/images/snowflakes.png");
+    background-repeat: no-repeat;
+    background-position: 
+      left 2rem top 3rem,
+      right 1rem bottom 4rem;
+    background-size: 320px 300px;
+    opacity: 0.2;
+
+    animation: pulseSnowflake 3s ease-in-out infinite;
+  }
+}
+
+@keyframes pulseSnowflake {
+    0% {
+        transform: translateY(-50%) sclae(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.05);
+        opacity: 0.3;
+        rotate: 6deg;
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.2;
+    }
+}
