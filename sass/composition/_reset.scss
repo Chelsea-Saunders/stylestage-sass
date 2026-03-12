@@ -37,7 +37,71 @@ body {
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   overflow-x: hidden;
+  margin: 0;
+  position: relative;
 }
+
+// bigger, closer snowflakes
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background-image: 
+    url("/images/snowflake-12.svg"),
+    url("/images/snowflake-2.svg"),
+    url("/images/snowflake-10.svg"),
+    url("/images/snowflake-4.svg"),
+    url("/images/snowflake-5.svg"),
+    url("/images/snowflake-6.svg");
+  background-repeat: no-repeat;
+  background-size: 
+    42px 42px, 
+    34px 34px, 
+    26px 26px, 
+    40px 40px, 
+    30px 30px, 
+    22px 22px;
+  background-position: 
+    initial;
+
+  opacity: 0.35;
+  animation: snow-falling-close 30s linear infinite;
+  animation-delay: -7s;
+}
+
+// smaller, further snowflakes
+body::after { 
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+
+  background-image: 
+    url("/images/snowflake-7.svg"),
+    url("/images/snowflake-8.svg"),
+    url("/images/snowflake-9.svg"),
+    url("/images/snowflake-3.svg"),
+    url("/images/snowflake-11.svg"),
+    url("/images/snowflake-1.svg");
+  background-repeat: no-repeat;
+  background-size: 
+    16px 16px, 
+    14px 14px, 
+    17px 17px, 
+    18px 18px, 
+    20px 20px, 
+    15px 15px;
+  background-position: 
+    initial;
+
+  opacity: 0.25;
+  animation: snow-falling-far 20s linear infinite;
+  animation-delay: -3s;
+ }
 
 /* Make images easier to work with */
 img {
@@ -53,6 +117,47 @@ select {
   font: inherit;
 }
 
+@keyframes snow-falling-close {
+  from {
+    background-position: 
+      10vw -65vh,
+      28vw -45vh,
+      52vw -25vh,
+      70vw -55vh,
+      84vw -35vh, 
+      92vw -105vh;
+  }
+  to {
+    background-position: 
+      14vw 115vh, 
+      24vw 115vh, 
+      56vw 115vh,
+      66vw 115vh,
+      88vw 115vh,
+      96vw 115vh;
+  }
+}
+@keyframes snow-falling-far {
+  from {
+    background-position: 
+      6vw -30vh,
+      20vw -140vh,
+      44vw -60vh,
+      62vw -220vh,
+      78vw -30vh, 
+      88vw -180vh;
+  }
+  to {
+    background-position: 
+      6vw -30vh,
+      20vw -75vh,
+      44vw -55vh,
+      62vw -90vh,
+      78vw -40vh, 
+      88vw -110vh;
+  }
+}
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -60,5 +165,10 @@ select {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  body::before, 
+  body::after {
+    animation: none !important;
   }
 }

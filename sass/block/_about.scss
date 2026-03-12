@@ -1,14 +1,5 @@
 #about {
   grid-area: about;
-
-  & h2,
-  & h3 {
-    font-family: var(--font-subheader);
-  }
-
-  & p {
-    font-family: var(--font-body);
-  }
   
   section:nth-of-type(2) {
     position: relative;
@@ -878,26 +869,26 @@
       background-position: 50% 70%, 70% 70%;
     }
   }
+}
 
-  @media (max-width: 640px) {
-    li:nth-child(16):hover::before {
-      content: "Mobile: (max-width: 640px)";
-    }
+@media (max-width: 640px) {
+  li:nth-child(16):hover::before {
+    content: "Mobile: (max-width: 640px)";
   }
-  @media (min-width: 641px) and (max-width: 1024px) {
-    li:nth-child(16):hover::before {
-      content: "tablet: 640 - 950px";
-    }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  li:nth-child(16):hover::before {
+    content: "tablet: 640 - 950px";
   }
-  @media (max-width: 950px) {
-    section:nth-child(2)::before {
-      transform: scale(2) translate (-24%, -25%);
-    }
+}
+@media (min-width: 950px) {
+  section:nth-child(2)::before {
+    transform: scale(2) translate(-24%, -25%);
   }
+}
 
-  @media (min-width: 1025px) {
-    li:nth-child(16):hover::before {
-      content: "desktop: 950px and larger screens";
-    }
+@media (min-width: 1025px) {
+  li:nth-child(16):hover::before {
+    content: "desktop: 950px and larger screens";
   }
 }
