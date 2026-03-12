@@ -159,7 +159,7 @@ html {
 
 body {
   /* gradient added for bkgnd */
-  background: linear-gradient(180deg, #0f1c2a 0%, #1e2f44 40%, #2b4a63 70%, #6b8fa3 100%);
+  background: linear-gradient(180deg, #0f1c2a 0%, #E6E9EB 30%, #E6E9EB 70%, #0f1c2a 100%);
   scroll-behavior: smooth !important;
   background-color: var(--color-background);
   color: var(--color-text);
