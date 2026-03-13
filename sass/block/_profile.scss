@@ -7,10 +7,10 @@
   margin: 1rem auto 10vh;
   padding: 1.25rem;
   z-index: 1;
+  color: var(--color-light);
 
   h4 {
     margin: 0;
-    color: var(--color-secondary);
     text-align: center;
   }
 
@@ -21,8 +21,17 @@
 
     > a {
       min-height: 2em;
-      border: 2px solid currentColor;
-      color: var(--color-secondary);
+      background-color: #6183a5;
+      color: var(--color-light);
+      box-shadow: 3px 3px #909396;
+    }
+
+    > a:hover {
+      background-color: transparent;
+      color: var(--color-light);
+      border-right: 1px solid #d7d9da;
+      border-bottom: 1px solid #d7d9da;
+      // box-shadow: 3px 3px #d7d9da;
     }
   }
 
