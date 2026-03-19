@@ -35,23 +35,32 @@
     pointer-events: none;
     z-index: 1;
 
-    width: 420px;
-    height: 420px;
+    width: 700px;
+    height: 700px;
 
     left: 50%;
     top: -15%;
 
     transform: translateY(-50%);
 
-    background-image: url("/images/snowflake-20.svg");
+    background-image: url("/images/cabin.png");
     background-repeat: no-repeat;
-    background-position: 
-      left 6rem top 3rem,
-      right 1rem bottom 4rem;
-    background-size: 320px 300px;
-    opacity: 0.5;
+    background-position: center;
+    background-size: 500px 500px;
 
-    animation: pulseSnowflake 4s ease-in-out infinite;
+    // fade edges
+    -webkit-mask-image: radial-gradient(
+      ellipse 35% 120% at center,
+      black 45%,
+      black 60%, 
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 35% 120% at center,
+      black 45%,
+      black 60%, 
+      transparent 100%
+    );
   }
   #contribute::before {
     content: "";
@@ -59,38 +68,17 @@
     pointer-events: none;
     z-index: 1;
 
-    width: 420px;
-    height: 420px;
+    width: 500px;
+    height: 500px;
 
-    left: 0%;
-    top: 55%;
+    left: 5%;
+    top: 53%;
 
     transform: translateY(-50%);
 
-    background-image: url("/images/snowflakes.png");
+    background-image: url("/images/pinecone.png");
     background-repeat: no-repeat;
-    background-position: 
-      left 2rem top 3rem,
-      right 1rem bottom 4rem;
-    background-size: 320px 300px;
-    opacity: 0.2;
-
-    animation: pulseSnowflake 3s ease-in-out infinite;
+    background-size: 450px 450px;
+    opacity: 0.7;
   }
-}
-
-@keyframes pulseSnowflake {
-    0% {
-        transform: translateY(-50%) sclae(1);
-        opacity: 0.2;
-    }
-    50% {
-        transform: translateY(-50%) scale(1.05);
-        opacity: 0.3;
-        rotate: 6deg;
-    }
-    100% {
-        transform: translateY(-50%) scale(1);
-        opacity: 0.2;
-    }
 }
