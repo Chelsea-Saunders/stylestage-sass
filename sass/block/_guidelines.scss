@@ -24,8 +24,8 @@
 
       &::before {
         position: absolute;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         transform: rotate(4deg) translate(4.75rem, -3.5rem);
         transform-origin: left center;
         -webkit-background-clip: text;
@@ -50,11 +50,11 @@
     pointer-events: none;
     z-index: 1;
 
-    width: 420px;
-    height: 420px;
+    inline-size: 420px;
+    block-size: 420px;
 
-    left: 8%;
-    top: -20%;
+    inset-inline-start: 8%;
+    inset-block-start: -20%;
 
     transform: translateY(-50%);
 

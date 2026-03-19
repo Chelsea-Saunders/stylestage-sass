@@ -3,7 +3,7 @@
   grid-area: contribute;
 
   & > .container {
-    margin-bottom: 3rem;
+    margin-block-end: 3rem;
   }
 
   @media (min-width: 950px) {
@@ -21,7 +21,7 @@
     // move footer to center both columns
     & > footer#files {
       grid-column: 1 / -1;
-      margin-top: 3rem;
+      margin-block-start: 3rem;
       justify-self: stretch;
       // background-color: transparent;
     }
@@ -35,30 +35,30 @@
     pointer-events: none;
     z-index: 1;
 
-    width: 700px;
-    height: 700px;
+    inline-size: 600px;
+    block-size: 600px;
 
-    left: 50%;
-    top: -15%;
+    inset-inline-start: 50%;
+    inset-block-start: -15%;
 
     transform: translateY(-50%);
 
     background-image: url("./images/cabin.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 500px 500px;
+    background-size: 400px 400px;
 
     // fade edges
     -webkit-mask-image: radial-gradient(
-      ellipse 35% 120% at center,
+      ellipse 30% 120% at center,
       black 45%,
-      black 60%, 
+      black 50%, 
       transparent 100%
     );
     mask-image: radial-gradient(
-      ellipse 35% 120% at center,
+      ellipse 30% 120% at center,
       black 45%,
-      black 60%, 
+      black 50%, 
       transparent 100%
     );
   }
@@ -68,11 +68,11 @@
     pointer-events: none;
     z-index: 1;
 
-    width: 500px;
-    height: 500px;
+    inline-size: 500px;
+    block-size: 500px;
 
-    left: 5%;
-    top: 53%;
+    inset-inline-start: 5%;
+    inset-block-start: 53%;
 
     transform: translateY(-50%);
 

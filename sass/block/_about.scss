@@ -35,7 +35,7 @@
 
     p:nth-of-type(2) {
       align-self: center;
-      margin-top: 2rem;
+      margin-block-start: 2rem;
       color: var(--color-secondary);
       font-size: 1.5em;
       font-weight: var(--font-weight-strong);
@@ -48,8 +48,10 @@
       justify-content: center;
       position: relative;
       list-style: none;
-      padding: 12px;
-      margin: 12px 0;
+      padding-block: 12px;
+      padding-inline: 12px;
+      margin-block: 12px;
+      margin-inline: 0;
       overflow: visible;
       border-radius: 14px;
       gap: 10px;
@@ -57,26 +59,27 @@
 
       li {
         position: relative;
-        margin: 10px 0;
-        padding: 8px 15px;
+        margin-block: 10px;
+        margin-inline: 0;
+        padding-block: 8px; 
+        padding-inline: 15px;
         border-radius: 25px;
         text-align: center;
         z-index: 0;
 
         &:hover {
           z-index: 2;
-          // transform: translateY(-2px) scale(1.25);
           filter: brightness(1.06);
         }
 
         &::after {
           content: "";
           position: absolute;
-          left: 50%;
-          top: 50%;
+          inset-inline-start: 50%;
+          inset-block-start: 50%;
           transform: translate(-50%, -50%);
-          width: 120px;
-          height: 32px;
+          inline-size: 120px;
+          block-size: 32px;
           border-radius: 12px;
           opacity: 0;
           transition: opacity 0.2s ease;
@@ -92,7 +95,6 @@
       // flex 
       li:nth-child(1) {
         gap: 10px;
-        // transform: translate(-50%, -48%);
 
         &::after {
           background: linear-gradient(
@@ -134,11 +136,11 @@
         }
 
         &::after {
-          left: 0;
-          top: 0;
+          inset-inline-start: 0;
+          inset-block-start: 0;
           transform: none;
-          width: 100%;
-          height: 100%;
+          inline-size: 100%;
+          block-size: 100%;
           border-radius: inherit;
           opacity: calc(0.0 + var(--demo) * 0.85);
           transition: opacity 180ms ease;
@@ -173,7 +175,7 @@
           margin: 0;
           font-size: 0.85rem;
           opacity: 0.75;
-          margin-bottom: 6px;
+          margin-block-end: 6px;
           pointer-events: none;
           color: black;
         }
@@ -191,7 +193,7 @@
       // gradients
       li:nth-child(5)::after {
         background: linear-gradient(120deg, rgba(54, 164, 168, 0.9), rgba(138, 136, 136, 0.9), rgba(255,255,255,0.8), rgba(54, 164, 168, 0.9));
-        background-size: 200% 100%;
+        background-size: clamp(150%, 200vw, 300%) 100%;
         animation: gradient 1.6s linear infinite;
         animation-play-state: paused;
       }
@@ -202,8 +204,8 @@
 
       // animation: pulsing dot
       li:nth-child(6)::after {
-        width: 50px;
-        height: 50px;
+        inline-size: 50px;
+        block-size: 50px;
         border-radius: 50%;
         background: rgba(54, 164, 168, 0.65);
         box-shadow: 0 0 0 0 rgba(138, 136, 136, 0.9);
@@ -220,8 +222,8 @@
           transform: translate(-50%, -50%) rotateY(0deg);
           transform-origin: center;
           transition: transform 0.5s ease;
-          width: 120%;
-          height: 100%;
+          inline-size: 120%;
+          block-size: 100%;
         }
 
         &:hover::after {
@@ -256,13 +258,13 @@
         &::after {
           content: "";
           position: absolute;
-          width: 38px;
-          height: 38px;
+          inline-size: 38px;
+          block-size: 38px;
           border-radius: 50%;
 
           // start position (left side)
-          left: -10px;
-          top: 50%;
+          inset-inline-start: -10px;
+          inset-block-start: 50%;
           transform: translateY(-50%);
           background: radial-gradient( 
             circle,
@@ -281,7 +283,7 @@
 
         &:hover::after {
           opacity: 1;
-          left: calc(100% - 38px);  // move to right side
+          inset-inline-start: calc(100% - 38px);  // move to right side
           animation: pop 480ms ease-out;
         }
       }
@@ -323,10 +325,10 @@
         &::after {
           content: "";
           position: absolute;
-          left: 50%;
-          top: 50%;
-          height: 30px;
-          width: clamp(60px, 12vw, 140px);
+          inset-inline-start: 50%;
+          inset-block-start: 50%;
+          block-size: 30px;
+          inline-size: clamp(60px, 12vw, 140px);
           transform: translate(-50%, -50%);
           border-radius: 999px;
           opacity: 0;
@@ -342,10 +344,10 @@
         &::before {
           content: "";
           position: absolute;
-          top: 50%;
-          left: calc(50% - (clamp(60px, 12vw, 140px) / 2));
-          width: 30px;
-          height: 30px;
+          inset-inline-start: 50%;
+          inset-block-start: calc(50% - (clamp(60px, 12vw, 140px) / 2));
+          block-size: 30px;
+          inline-size: 30px;
           border-radius: 50%;
           transform: translateY(-50%);
           background: rgba(138, 136, 136, 0.9);
@@ -356,7 +358,7 @@
 
         &:hover::before {
           opacity: 1;
-          left: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
+          inset-inline-start: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
         }
       }
 
@@ -377,11 +379,11 @@
         &::after {
           content: "";
           position: absolute;
-          left: auto;
-          top: auto;
+          inset-inline-start: auto;
+          inset-block-start: auto;
           transform: none;
-          width: auto;
-          height: auto;
+          inline-size: auto;
+          block-size: auto;
           inset: 0;
           border-radius: inherit;
           opacity: 0;
@@ -446,10 +448,10 @@
           content: "";
           position: absolute;
 
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
+          inline-size: 100%;
+          block-size: 100%;
+          inset-block-start: 0;
+          inset-inline-start: 0;
 
           transform: none;
 
@@ -487,10 +489,10 @@
         &::before {
           content: "";
           position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          height: 26px;
+          inset-inline-start: 0;
+          inset-inline-end: 0;
+          inset-block-start: 0;
+          block-size: 26px;
 
           display: grid;
           place-items: center;
@@ -533,10 +535,10 @@
           content: "";
           position: absolute;
           inset: 0;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
+          inline-size: 100%;
+          block-size: 100%;
+          inset-inline-start: 0;
+          inset-block-start: 0;
           transform: none;
           border-radius: inherit;
 
@@ -622,10 +624,10 @@
           content: "";
           position: absolute;
           inset: 0;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
+          inline-size: 100%;
+          block-size: 100%;
+          inset-inline-start: 0;
+          inset-block-start: 0;
           transform: none;
 
           opacity: 0;
@@ -703,10 +705,10 @@
           content: "";
           position: absolute;
           inset: 0;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
+          inline-size: 100%;
+          block-size: 100%;
+          inset-inline-start: 0;
+          inset-block-start: 0;
           transform: none;
           border-radius: inherit;
 

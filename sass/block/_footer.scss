@@ -27,21 +27,21 @@
       grid-column:-1;
       justify-content: center;
       box-shadow: 3px 3px $color-primary;
-      padding-bottom:5px;
+      padding-block-end:5px;
       li{
         margin: 0;
         padding: 0;
         list-style: none;
         border-radius:15px;
-        max-width: 100%;
+        max-inline-size: 100%;
 
         a{
           font-size: 1rem;
           display:flex;
           border-radius:25px;
           padding:15px;
-          height:5rem;
-          width:5rem;
+          inline-size:5rem;
+          block-size:5rem;
           place-items: center;
           text-align: center;
         }
@@ -95,7 +95,13 @@
       background-size: 100% auto;
       opacity: 0.3;
 
-      /* fades the top */
+      /* fade image */
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.504) 30%,
+        black 100%
+      );
       mask-image: linear-gradient(
         to bottom,
         transparent 0%,

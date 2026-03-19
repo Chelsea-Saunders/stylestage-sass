@@ -32,7 +32,7 @@ body {
   grid-template-rows: auto auto 1fr;
   row-gap: 0;
 
-  min-height: 100vh;
+  min-block-size: 100vh;
   font-size: 100%;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
@@ -106,7 +106,7 @@ body::after {
 /* Make images easier to work with */
 img {
   display: block;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 /* Inherit fonts for inputs and buttons */
