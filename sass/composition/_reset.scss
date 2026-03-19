@@ -50,12 +50,12 @@ body::before {
   z-index: 9999;
 
   background-image: 
-    url("/images/snowflake-12.svg"),
-    url("/images/snowflake-2.svg"),
-    url("/images/snowflake-10.svg"),
-    url("/images/snowflake-4.svg"),
-    url("/images/snowflake-5.svg"),
-    url("/images/snowflake-6.svg");
+    url("./images/snowflake-12.svg"),
+    url("./images/snowflake-2.svg"),
+    url("./images/snowflake-10.svg"),
+    url("./images/snowflake-4.svg"),
+    url("./images/snowflake-5.svg"),
+    url("./images/snowflake-6.svg");
   background-repeat: no-repeat;
   background-size: 
     42px 42px, 
@@ -81,12 +81,12 @@ body::after {
   z-index: 9998;
 
   background-image: 
-    url("/images/snowflake-7.svg"),
-    url("/images/snowflake-8.svg"),
-    url("/images/snowflake-9.svg"),
-    url("/images/snowflake-3.svg"),
-    url("/images/snowflake-11.svg"),
-    url("/images/snowflake-1.svg");
+    url("./images/snowflake-7.svg"),
+    url("./images/snowflake-8.svg"),
+    url("./images/snowflake-9.svg"),
+    url("./images/snowflake-3.svg"),
+    url("./images/snowflake-11.svg"),
+    url("./images/snowflake-1.svg");
   background-repeat: no-repeat;
   background-size: 
     16px 16px, 
