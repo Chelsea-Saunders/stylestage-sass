@@ -331,7 +331,7 @@ blockquote::before {
   color: var(--color-light);
 }
 #about blockquote p {
-  color: var(--color-secondary);
+  color: #41464c;
 }
 #about section.container > p:nth-of-type(n+3) {
   color: var(--color-secondary);
