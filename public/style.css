@@ -357,6 +357,41 @@ blockquote::before {
   font-weight: var(--font-weight-strong);
   text-align: center;
 }
+#about section:nth-of-type(2) p:has(+ ul) {
+  position: relative;
+  padding-block-end: 10%;
+}
+#about section:nth-of-type(2) p:has(+ ul)::before {
+  content: "Click for some fun CSS demos!";
+  position: absolute;
+  inset-block-start: 85%;
+  inset-inline-start: 25%;
+  padding-block-start: 0.5rem;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  z-index: 100;
+  pointer-events: none;
+  transform: rotate(3deg);
+  white-space: nowrap;
+  font-family: var(--font-header);
+  animation: b4pulse 3.5s ease-in-out infinite;
+}
+#about section:nth-of-type(2) p:has(+ ul)::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 12%;
+  inline-size: 40px;
+  block-size: 40px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 20 Q40 20 40 60 L40 75 M40 75 L30 65 M40 75 L50 65' stroke='black' fill='none' stroke-width='6'/%3E%3C/svg%3E") no-repeat center/contain;
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 20 Q40 20 40 60 L40 75 M40 75 L30 65 M40 75 L50 65' stroke='black' fill='none' stroke-width='6'/%3E%3C/svg%3E") contain/no-repeat center;
+  background: linear-gradient(90deg, #5a8289, #9edde9, #5a8289);
+  background-size: 300% 100%;
+  z-index: 1;
+  pointer-events: none;
+  transform: rotate(-25deg);
+  animation: gradientColors 5s linear infinite;
+}
 #about section:nth-of-type(2) ul {
   display: flex;
   flex-wrap: wrap;
@@ -861,6 +896,25 @@ blockquote::before {
   opacity: 1;
   animation-play-state: running;
 }
+@keyframes b4pulse {
+  0% {
+    transform: rotate(3deg) scale(1);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(3deg) scale(1);
+  }
+}
+@keyframes gradientColors {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
 @keyframes flex {
   from {
     transform: translate(-50%, -48%) translateX(0);
@@ -975,6 +1029,11 @@ blockquote::before {
 @media (min-width: 641px) and (max-width: 1024px) {
   li:nth-child(16):hover::before {
     content: "tablet: 640 - 950px";
+  }
+}
+@media (min-width: 650px) {
+  p:has(+ ul)::before {
+    content: "Hover for some fun CSS demos!" !important;
   }
 }
 @media (min-width: 900px) {
