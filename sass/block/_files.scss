@@ -7,7 +7,7 @@
   text-align: center;
 
   h3 {
-    height: 0;
+    inline-size: 0;
     opacity: 0;
   }
 
@@ -18,8 +18,8 @@
     gap: 1.5rem;
     justify-items: center; 
 
-    width: 100%;
-    max-width: 28rem;
+    inline-size: 100%;
+    max-inline-size: 28rem;
     margin-inline: auto;
 
     padding: 3vmin 3vmin 2vmin 3vmin;
@@ -36,8 +36,8 @@
     color: var(--color-primary);
     border-radius: 0;
     border: 1px solid var(--color-secondary);
-    border-top: 0;
-    border-left: 0;
+    border-block-start: 0;
+    border-inline-start: 0;
   }
   .container a.link-codepen {
     background: none;
@@ -45,13 +45,13 @@
   }
   .container a.link-codepen:hover {
     border: 1px solid var(--color-secondary);
-    border-top: 0;
-    border-left: 0;
+    border-block-start: 0;
+    border-inline-start: 0;
   }
 
   @media (min-width: 950px) {
-    width: 100%;
-    margin-left: 0;
+    inline-size: 100%;
+    margin-inline-start: 0;
     padding: 4rem 0;
 
     place-content: initial;
@@ -62,8 +62,8 @@
     // two columns for desktop
     .container {
       margin-inline: auto;
-      width: 100%;
-      max-width: 40rem;
+      inline-size: 100%;
+      max-inline-size: 40rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }

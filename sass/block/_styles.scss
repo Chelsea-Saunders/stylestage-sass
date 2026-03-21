@@ -1,6 +1,6 @@
 .features {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
   border: none;
@@ -12,11 +12,11 @@
     &::before {
       content: "";
       position: absolute;
-      width: 120px;
-      height: 120px;
+      inline-size: 120px;
+      block-size: 120px;
 
-      left: 50%;
-      top: 72%;
+      inset-inline-start: 50%;
+      inset-block-start: 72%;
 
       background: url("./images/snowflake-4.svg") center / contain no-repeat;
 
@@ -88,8 +88,8 @@
   a:hover {
     color: var(--color-light);
     background-color: transparent;
-    border-right: 1px solid #d7d9da;
-    border-bottom: 1px solid #d7d9da;
+    border-inline-end: 1px solid #d7d9da;
+    border-block-end: 1px solid #d7d9da;
   }
 }
 

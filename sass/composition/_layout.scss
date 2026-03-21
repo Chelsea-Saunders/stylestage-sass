@@ -27,8 +27,8 @@ a {
 }
 
 main {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-block-start: 5vh;
+  padding-block-end: 5vh;
 
   &:focus {
     outline: none;
@@ -44,8 +44,8 @@ article {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-block-start: 5vh;
+    padding-block-end: 5vh;
   }
 }
 
@@ -53,10 +53,10 @@ article,
 .page-footer,
 #styles {
   .container {
-    width: 100%;
-    max-width: 80ch;
-    margin-right: auto;
-    margin-left: auto;
+    inline-size: 100%;
+    max-inline-size: 80ch;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
   }
 }
 

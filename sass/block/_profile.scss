@@ -2,8 +2,8 @@
 @use "../composition/theme" as theme;
 
 .profile {
-  width: 95vw;
-  max-width: 80ch;
+  inline-size: 95vw;
+  max-inline-size: 80ch;
   margin: 1rem auto 10vh;
   padding: 1.25rem;
   z-index: 1;
@@ -20,7 +20,7 @@
     grid-gap: 1rem;
 
     > a {
-      min-height: 2em;
+      min-block-size: 2em;
       background-color: #6183a5;
       color: var(--color-light);
       box-shadow: 3px 3px #909396;
@@ -31,7 +31,6 @@
       color: var(--color-light);
       border-right: 1px solid #d7d9da;
       border-bottom: 1px solid #d7d9da;
-      // box-shadow: 3px 3px #d7d9da;
     }
   }
 
@@ -48,8 +47,8 @@
       padding: 0.45em;
 
       span:nth-child(1) {
-        width: auto;
-        margin-right: 0.25em;
+        inline-size: auto;
+        margin-inline-end: 0.25em;
         font-weight: var(--font-weight-strong);
       }
 
