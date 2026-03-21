@@ -70,7 +70,7 @@ body {
   display: grid;
   grid-template-rows: auto auto 1fr;
   row-gap: 0;
-  min-height: 100vh;
+  min-block-size: 100vh;
   font-size: 100%;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
@@ -112,7 +112,7 @@ body::after {
 /* Make images easier to work with */
 img {
   display: block;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -171,8 +171,8 @@ a {
 }
 
 main {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-block-start: 5vh;
+  padding-block-end: 5vh;
 }
 main:focus {
   outline: none;
@@ -185,17 +185,17 @@ article section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-block-start: 5vh;
+  padding-block-end: 5vh;
 }
 
 article .container,
 .page-footer .container,
 #styles .container {
-  width: 100%;
-  max-width: 80ch;
-  margin-right: auto;
-  margin-left: auto;
+  inline-size: 100%;
+  max-inline-size: 80ch;
+  margin-inline-end: auto;
+  margin-inline-start: auto;
 }
 
 article,
@@ -218,7 +218,7 @@ h3,
 h4 {
   font-weight: var(--font-weight-strong);
   line-height: 1;
-  margin-bottom: 0.65em;
+  margin-block-end: 0.65em;
 }
 
 h1 {
@@ -239,7 +239,7 @@ h2 {
   align-self: center;
   color: var(--color-background);
   padding: 0.25em 0.5em;
-  margin-bottom: 1.5rem;
+  margin-block-end: 1.5rem;
   font-family: var(--font-subheader);
 }
 
@@ -265,13 +265,13 @@ p {
 
 article .container > ul:not(.features) > li + li,
 article .container > ol > li + li {
-  margin-top: 1rem;
+  margin-block-start: 1rem;
 }
 article .container * + h2 {
-  margin-top: 4rem;
+  margin-block-start: 4rem;
 }
 article .container * + h3 {
-  margin-top: 2rem;
+  margin-block-start: 2rem;
 }
 
 strong {
@@ -297,7 +297,7 @@ blockquote > * {
 blockquote p {
   position: relative;
   font-size: var(--font-size-h4);
-  margin-bottom: 0;
+  margin-block-end: 0;
   padding: 0.5em;
 }
 blockquote p strong {
@@ -305,10 +305,10 @@ blockquote p strong {
 }
 blockquote::before {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset-inline-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
   border: 4px solid var(--color-primary);
   box-shadow: 0.25em 0.25em var(--color-secondary);
   transform: scale(1.1);
@@ -331,7 +331,7 @@ blockquote::before {
   color: var(--color-light);
 }
 #about blockquote p {
-  color: var(--color-secondary);
+  color: #41464c;
 }
 #about section.container > p:nth-of-type(n+3) {
   color: var(--color-secondary);
@@ -351,7 +351,7 @@ blockquote::before {
 }
 #about section:nth-of-type(2) p:nth-of-type(2) {
   align-self: center;
-  margin-top: 2rem;
+  margin-block-start: 2rem;
   color: var(--color-secondary);
   font-size: 1.5em;
   font-weight: var(--font-weight-strong);
@@ -363,8 +363,10 @@ blockquote::before {
   justify-content: center;
   position: relative;
   list-style: none;
-  padding: 12px;
-  margin: 12px 0;
+  padding-block: 12px;
+  padding-inline: 12px;
+  margin-block: 12px;
+  margin-inline: 0;
   overflow: visible;
   border-radius: 14px;
   gap: 10px;
@@ -372,8 +374,10 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li {
   position: relative;
-  margin: 10px 0;
-  padding: 8px 15px;
+  margin-block: 10px;
+  margin-inline: 0;
+  padding-block: 8px;
+  padding-inline: 15px;
   border-radius: 25px;
   text-align: center;
   z-index: 0;
@@ -385,11 +389,11 @@ blockquote::before {
 #about section:nth-of-type(2) ul li::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
   transform: translate(-50%, -50%);
-  width: 120px;
-  height: 32px;
+  inline-size: 120px;
+  block-size: 32px;
   border-radius: 12px;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -429,11 +433,11 @@ blockquote::before {
   --demo: 1;
 }
 #about section:nth-of-type(2) ul li:nth-child(3)::after {
-  left: 0;
-  top: 0;
+  inset-inline-start: 0;
+  inset-block-start: 0;
   transform: none;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   border-radius: inherit;
   opacity: calc(0.0 + var(--demo) * 0.85);
   transition: opacity 180ms ease;
@@ -458,7 +462,7 @@ blockquote::before {
   margin: 0;
   font-size: 0.85rem;
   opacity: 0.75;
-  margin-bottom: 6px;
+  margin-block-end: 6px;
   pointer-events: none;
   color: black;
 }
@@ -472,7 +476,7 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(5)::after {
   background: linear-gradient(120deg, rgba(54, 164, 168, 0.9), rgba(138, 136, 136, 0.9), rgba(255, 255, 255, 0.8), rgba(54, 164, 168, 0.9));
-  background-size: 200% 100%;
+  background-size: clamp(150%, 200vw, 300%) 100%;
   animation: gradient 1.6s linear infinite;
   animation-play-state: paused;
 }
@@ -481,8 +485,8 @@ blockquote::before {
   opacity: 0.9;
 }
 #about section:nth-of-type(2) ul li:nth-child(6)::after {
-  width: 50px;
-  height: 50px;
+  inline-size: 50px;
+  block-size: 50px;
   border-radius: 50%;
   background: rgba(54, 164, 168, 0.65);
   box-shadow: 0 0 0 0 rgba(138, 136, 136, 0.9);
@@ -497,8 +501,8 @@ blockquote::before {
   transform: translate(-50%, -50%) rotateY(0deg);
   transform-origin: center;
   transition: transform 0.5s ease;
-  width: 120%;
-  height: 100%;
+  inline-size: 120%;
+  block-size: 100%;
 }
 #about section:nth-of-type(2) ul li:nth-child(7):hover::after {
   transform: translate(-50%, -50%) rotateY(35deg);
@@ -524,11 +528,11 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(8)::after {
   content: "";
   position: absolute;
-  width: 38px;
-  height: 38px;
+  inline-size: 38px;
+  block-size: 38px;
   border-radius: 50%;
-  left: -10px;
-  top: 50%;
+  inset-inline-start: -10px;
+  inset-block-start: 50%;
   transform: translateY(-50%);
   background: radial-gradient(circle, rgba(54, 164, 168, 0.9), rgba(138, 136, 136, 0.85) 60%);
   opacity: 0;
@@ -541,7 +545,7 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(8):hover::after {
   opacity: 1;
-  left: calc(100% - 38px);
+  inset-inline-start: calc(100% - 38px);
   animation: pop 480ms ease-out;
 }
 #about section:nth-of-type(2) ul li:nth-child(9):hover {
@@ -568,10 +572,10 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(11)::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 30px;
-  width: clamp(60px, 12vw, 140px);
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  block-size: 30px;
+  inline-size: clamp(60px, 12vw, 140px);
   transform: translate(-50%, -50%);
   border-radius: 999px;
   opacity: 0;
@@ -585,10 +589,10 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(11)::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: calc(50% - (clamp(60px, 12vw, 140px) / 2));
-  width: 30px;
-  height: 30px;
+  inset-inline-start: 50%;
+  inset-block-start: calc(50% - (clamp(60px, 12vw, 140px) / 2));
+  block-size: 30px;
+  inline-size: 30px;
   border-radius: 50%;
   transform: translateY(-50%);
   background: rgba(138, 136, 136, 0.9);
@@ -598,7 +602,7 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(11):hover::before {
   opacity: 1;
-  left: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
+  inset-inline-start: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
 }
 #about section:nth-of-type(2) ul li:nth-child(12)::after {
   background: rgba(54, 164, 168, 0.9);
@@ -613,11 +617,11 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(13)::after {
   content: "";
   position: absolute;
-  left: auto;
-  top: auto;
+  inset-inline-start: auto;
+  inset-block-start: auto;
   transform: none;
-  width: auto;
-  height: auto;
+  inline-size: auto;
+  block-size: auto;
   inset: 0;
   border-radius: inherit;
   opacity: 0;
@@ -662,10 +666,10 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(14)::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   transform: none;
   border-radius: inherit;
   opacity: 0;
@@ -683,10 +687,10 @@ blockquote::before {
 #about section:nth-of-type(2) ul li:nth-child(14)::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 26px;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  block-size: 26px;
   display: grid;
   place-items: center;
   opacity: 0;
@@ -718,10 +722,10 @@ blockquote::before {
   content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-inline-start: 0;
+  inset-block-start: 0;
   transform: none;
   border-radius: inherit;
   opacity: 0;
@@ -771,10 +775,10 @@ blockquote::before {
   content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-inline-start: 0;
+  inset-block-start: 0;
   transform: none;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -818,10 +822,10 @@ blockquote::before {
   content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-inline-start: 0;
+  inset-block-start: 0;
   transform: none;
   border-radius: inherit;
   opacity: 0;
@@ -998,7 +1002,7 @@ blockquote::before {
   grid-area: contribute;
 }
 #contribute > .container {
-  margin-bottom: 3rem;
+  margin-block-end: 3rem;
 }
 @media (min-width: 950px) {
   #contribute {
@@ -1012,7 +1016,7 @@ blockquote::before {
   }
   #contribute > footer#files {
     grid-column: 1/-1;
-    margin-top: 3rem;
+    margin-block-start: 3rem;
     justify-self: stretch;
   }
 }
@@ -1023,17 +1027,17 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    width: 700px;
-    height: 700px;
-    left: 50%;
-    top: -15%;
+    inline-size: 600px;
+    block-size: 600px;
+    inset-inline-start: 50%;
+    inset-block-start: -15%;
     transform: translateY(-50%);
     background-image: url("./images/cabin.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 500px 500px;
-    -webkit-mask-image: radial-gradient(ellipse 35% 120% at center, black 45%, black 60%, transparent 100%);
-    mask-image: radial-gradient(ellipse 35% 120% at center, black 45%, black 60%, transparent 100%);
+    background-size: 400px 400px;
+    -webkit-mask-image: radial-gradient(ellipse 30% 120% at center, black 45%, black 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 30% 120% at center, black 45%, black 50%, transparent 100%);
   }
 
   #contribute::before {
@@ -1041,10 +1045,10 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    width: 500px;
-    height: 500px;
-    left: 5%;
-    top: 53%;
+    inline-size: 500px;
+    block-size: 500px;
+    inset-inline-start: 5%;
+    inset-block-start: 53%;
     transform: translateY(-50%);
     background-image: url("./images/pinecone.png");
     background-repeat: no-repeat;
@@ -1058,7 +1062,7 @@ blockquote::before {
   text-align: center;
 }
 #files h3 {
-  height: 0;
+  inline-size: 0;
   opacity: 0;
 }
 #files .container {
@@ -1066,8 +1070,8 @@ blockquote::before {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   justify-items: center;
-  width: 100%;
-  max-width: 28rem;
+  inline-size: 100%;
+  max-inline-size: 28rem;
   margin-inline: auto;
   padding: 3vmin 3vmin 2vmin 3vmin;
   outline: 4px dashed var(--color-secondary);
@@ -1083,8 +1087,8 @@ blockquote::before {
   color: var(--color-primary);
   border-radius: 0;
   border: 1px solid var(--color-secondary);
-  border-top: 0;
-  border-left: 0;
+  border-block-start: 0;
+  border-inline-start: 0;
 }
 #files .container a.link-codepen {
   background: none;
@@ -1092,13 +1096,13 @@ blockquote::before {
 }
 #files .container a.link-codepen:hover {
   border: 1px solid var(--color-secondary);
-  border-top: 0;
-  border-left: 0;
+  border-block-start: 0;
+  border-inline-start: 0;
 }
 @media (min-width: 950px) {
   #files {
-    width: 100%;
-    margin-left: 0;
+    inline-size: 100%;
+    margin-inline-start: 0;
     padding: 4rem 0;
     place-content: initial;
     justify-items: center;
@@ -1107,8 +1111,8 @@ blockquote::before {
   }
   #files .container {
     margin-inline: auto;
-    width: 100%;
-    max-width: 40rem;
+    inline-size: 100%;
+    max-inline-size: 40rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -1150,22 +1154,22 @@ blockquote::before {
   grid-column: -1;
   justify-content: center;
   box-shadow: 3px 3px #4C6E91;
-  padding-bottom: 5px;
+  padding-block-end: 5px;
 }
 .page-footer .container ul li {
   margin: 0;
   padding: 0;
   list-style: none;
   border-radius: 15px;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 .page-footer .container ul li a {
   font-size: 1rem;
   display: flex;
   border-radius: 25px;
   padding: 15px;
-  height: 5rem;
-  width: 5rem;
+  inline-size: 5rem;
+  block-size: 5rem;
   place-items: center;
   text-align: center;
 }
@@ -1206,7 +1210,8 @@ blockquote::before {
     background-position: center;
     background-size: 100% auto;
     opacity: 0.3;
-    /* fades the top */
+    /* fade image */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.504) 30%, black 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.504) 30%, black 100%);
   }
   .page-footer .container {
@@ -1260,8 +1265,8 @@ blockquote::before {
   }
   #guidelines p:nth-of-type(2)::before {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     transform: rotate(4deg) translate(4.75rem, -3.5rem);
     transform-origin: left center;
     -webkit-background-clip: text;
@@ -1282,10 +1287,10 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    width: 420px;
-    height: 420px;
-    left: 8%;
-    top: -20%;
+    inline-size: 420px;
+    block-size: 420px;
+    inset-inline-start: 8%;
+    inset-block-start: -20%;
     transform: translateY(-50%);
     background-image: url("./images/blue-snowflake.png");
     background-repeat: no-repeat;
@@ -1313,7 +1318,7 @@ blockquote::before {
 header {
   --logomark-height: 3em;
   --logomark-padding: 0 1em;
-  height: 100vh;
+  block-size: 100vh;
   display: grid;
   place-items: center;
   padding: 3rem 0 0 0;
@@ -1323,7 +1328,7 @@ header {
 }
 header h1 {
   display: inline-grid;
-  min-height: var(--logomark-height);
+  min-block-size: var(--logomark-height);
   padding: var(--logomark-padding);
   border: 0.16em solid var(--color-primary);
   box-shadow: 0.12em 0.12em var(--color-secondary);
@@ -1331,15 +1336,15 @@ header h1 {
   cursor: pointer;
 }
 header h2 {
-  max-width: 30ch;
+  max-inline-size: 30ch;
 }
 header .container > :not(h1) {
-  max-height: 0;
+  max-block-size: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0;
   margin: 0;
-  transition: max-height 250ms ease, opacity 200ms ease, padding 250ms ease;
+  transition: max-inline-size 250ms ease, opacity 200ms ease, padding 250ms ease;
   font-size: 0.7rem;
   color: var(--color-gray);
   margin-inline: auto;
@@ -1353,10 +1358,10 @@ nav {
 
 .skip-link {
   position: absolute;
-  top: auto;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
+  inset-block-start: auto;
+  inset-inline-start: -10000px;
+  inline-size: 1px;
+  block-size: 1px;
   background-color: var(--color-secondary);
   color: #fff;
   font-size: 1.125rem;
@@ -1364,15 +1369,15 @@ nav {
 }
 .skip-link:focus {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: auto;
-  height: auto;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: auto;
+  block-size: auto;
   padding: 0.5em;
 }
 
 [class^=link]:not(.link-codepen) {
-  min-height: 3em;
+  min-block-size: 3em;
   background-color: var(--color-primary);
   color: #fff;
   box-shadow: 0.18em 0.18em var(--color-secondary);
@@ -1399,8 +1404,8 @@ nav {
   background-color: var(--color-background);
   color: var(--color-primary);
   border: 1px solid var(--color-secondary);
-  border-top: 0;
-  border-left: 0;
+  border-block-start: 0;
+  border-inline-start: 0;
 }
 [class^=link]:not(.link-codepen):focus,
 .profile .container > a:focus {
@@ -1409,15 +1414,15 @@ nav {
 }
 
 .page-footer [class^=link] {
-  width: 100%;
-  min-height: 2.5em;
+  inline-size: 100%;
+  min-inline-size: 2.5em;
   background-color: var(--color-background);
   color: var(--color-primary);
 }
 
 .link-codepen {
   display: block;
-  margin-top: 1rem;
+  margin-block-start: 1rem;
   font-size: var(--font-size-h4);
 }
 .link-codepen:hover {
@@ -1428,7 +1433,7 @@ nav {
 }
 .link-codepen::before {
   position: absolute;
-  padding-right: 1.25em;
+  padding-inline-end: 1.25em;
   transform: translate(15%, -90%) rotate(-3deg);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 79.6 187.1'%3E%3Cpath fill='svgColor(primary-alt)' d='M12 131l-2 13-3 26a10 10 0 000 2 1 1 0 001 0 24 24 0 002-3 37 37 0 016-8 73 73 0 007-9l24-33 4-5a70 70 0 006-7l15-20a8 8 0 001-1 1 1 0 000-1 16 16 0 00-2-1l-8-3a69 69 0 01-13-6 7 7 0 00-1-1l-16-6-13-7a57 57 0 00-10-4 17 17 0 01-2-1 2 2 0 01-1-4 18 18 0 012-2 93 93 0 0011-13 95 95 0 018-8l10-11a32 32 0 003-4c3-5 7-9 12-13a12 12 0 011-1 1 1 0 012 0 2 2 0 010 2 27 27 0 01-3 3 104 104 0 00-10 12 115 115 0 01-11 13 102 102 0 00-11 13 78 78 0 01-5 7l-2 2a1 1 0 000 1l19 8 9 4 3 2a77 77 0 0113 5 22 22 0 003 2l17 8a8 8 0 011 1 2 2 0 010 2 22 22 0 01-1 3l-11 14a33 33 0 00-2 3 98 98 0 01-10 13l-5 7-23 31a87 87 0 01-7 9 60 60 0 00-6 8l-2 3a1 1 0 000 1l9-4 12-6 10-6 13-7a10 10 0 012 0 2 2 0 012 1 2 2 0 010 3 24 24 0 01-3 1l-8 4-20 11-24 12a19 19 0 01-2 1 2 2 0 01-3-2 10 10 0 010-2l1-7 3-24 3-21a39 39 0 011-5 2 2 0 013-1 2 2 0 011 2v4z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -1444,14 +1449,14 @@ nav {
 }
 @media (max-width: 400px) {
   .link-allstyles {
-    margin-left: 6rem;
+    margin-inline-start: 6rem;
   }
 }
 
 .link-github svg {
-  width: 1em;
-  height: 1em;
-  margin-right: 0.25em;
+  inline-size: 1em;
+  block-size: 1em;
+  margin-inline-end: 0.25em;
   fill: currentColor;
 }
 
@@ -1471,8 +1476,8 @@ nav {
 }
 
 nav {
-  height: 100px;
-  width: 100%;
+  block-size: 100px;
+  inline-size: 100%;
   position: fixed;
   z-index: 100;
   text-align: center;
@@ -1512,18 +1517,18 @@ nav a:hover {
 @media (min-width: 669px) {
   nav ul a {
     font-size: 17px;
-    width: 100px;
+    inline-size: 100px;
   }
 }
 @media (min-width: 800px) {
   nav ul a {
     font-size: 17px;
-    width: 125px;
+    inline-size: 125px;
   }
 }
 .profile {
-  width: 95vw;
-  max-width: 80ch;
+  inline-size: 95vw;
+  max-inline-size: 80ch;
   margin: 1rem auto 10vh;
   padding: 1.25rem;
   z-index: 1;
@@ -1539,7 +1544,7 @@ nav a:hover {
   grid-gap: 1rem;
 }
 .profile .container > a {
-  min-height: 2em;
+  min-block-size: 2em;
   background-color: #6183a5;
   color: var(--color-light);
   box-shadow: 3px 3px #909396;
@@ -1563,8 +1568,8 @@ nav a:hover {
   padding: 0.45em;
 }
 .profile ul li span:nth-child(1) {
-  width: auto;
-  margin-right: 0.25em;
+  inline-size: auto;
+  margin-inline-end: 0.25em;
   font-weight: var(--font-weight-strong);
 }
 .profile ul li span:nth-child(2) {
@@ -1599,7 +1604,7 @@ nav a:hover {
 
 .features {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
   border: none;
@@ -1611,10 +1616,10 @@ nav a:hover {
 .features li::before {
   content: "";
   position: absolute;
-  width: 120px;
-  height: 120px;
-  left: 50%;
-  top: 72%;
+  inline-size: 120px;
+  block-size: 120px;
+  inset-inline-start: 50%;
+  inset-block-start: 72%;
   background: url("./images/snowflake-4.svg") center/contain no-repeat;
   pointer-events: none;
   z-index: 0;
@@ -1676,8 +1681,8 @@ nav a:hover {
 #styles a:hover {
   color: var(--color-light);
   background-color: transparent;
-  border-right: 1px solid #d7d9da;
-  border-bottom: 1px solid #d7d9da;
+  border-inline-end: 1px solid #d7d9da;
+  border-block-end: 1px solid #d7d9da;
 }
 
 @media (min-width: 515px) and (max-width: 765px) {
@@ -1688,7 +1693,7 @@ nav a:hover {
 }
 
 #main > .container {
-  width: 100%;
+  inline-size: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "about" "guidelines" "contribute";
@@ -1699,7 +1704,8 @@ nav a:hover {
 #guidelines > .container,
 #contribute > .container,
 #contribute footer > .container {
-    padding: 4rem 2rem 0 2rem;
+    padding-block: 4rem 0;
+    padding-inline: 2rem;
     background: var(--color-background);
   }
 
@@ -1707,8 +1713,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    width: 100%;
-    max-width: 70rem;
+    max-inline-size: 70rem;
     margin-inline: auto;
     padding: 3rem;
     position: relative;
@@ -1718,13 +1723,13 @@ nav a:hover {
   #guidelines {
     grid-column: 1;
     grid-row: 2;
-    margin-top: -10rem;
+    margin-block-start: -10rem;
   }
 
   #contribute {
     grid-column: 1/-1;
     grid-row: 2;
-    margin-top: 30rem;
+    margin-block-start: 30rem;
   }
 
   #about {
@@ -1736,27 +1741,27 @@ nav a:hover {
     gap: 3rem;
   }
   #about > .container {
-    width: 100%;
+    inline-size: 100%;
   }
   #about > .container:nth-of-type(1) {
     grid-column: 1;
     justify-self: start;
     transform: translateX(calc(-100% - 3rem));
-    margin-top: 2rem;
+    margin-block-start: 2rem;
   }
   #about > .container:nth-of-type(2) {
     grid-column: 1;
     justify-self: start;
-    margin-top: -30rem;
+    margin-block-start: -30rem;
   }
 
   #main > .container::before {
     content: "";
     position: absolute;
-    left: 50%;
-    top: 5rem;
-    bottom: 8rem;
-    width: 4px;
+    inset-inline-start: 50%;
+    inset-block-start: 5rem;
+    inset-block-end: 8rem;
+    inline-size: 4px;
     background: var(--color-primary);
     opacity: 0.9;
     transform: translateX(-50%);
@@ -1764,10 +1769,10 @@ nav a:hover {
   #main > .container::after {
     content: "";
     position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 58%;
-    top: 23rem;
+    inline-size: 400px;
+    block-size: 400px;
+    inset-inline-start: 58%;
+    inset-block-start: 25rem;
     transform: translateY(-50%);
     background-image: url("./images/mountain.png");
     background-repeat: no-repeat;
