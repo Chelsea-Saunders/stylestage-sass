@@ -35,8 +35,8 @@
     pointer-events: none;
     z-index: 1;
 
-    inline-size: 600px;
-    block-size: 600px;
+    inline-size: clamp(250px, 50vw, 600px);
+    block-size: clamp(250px, 50vw, 600px);
 
     inset-inline-start: 50%;
     inset-block-start: -15%;
@@ -68,17 +68,17 @@
     pointer-events: none;
     z-index: 1;
 
-    inline-size: 500px;
-    block-size: 500px;
+    inline-size: clamp(300px, 40vw, 500px);
+    block-size: clamp(300px, 40vw, 500px);
 
-    inset-inline-start: 5%;
-    inset-block-start: 53%;
+    inset-inline-start: clamp(-1%, 5%, 0%);
+    inset-block-start: clamp(50%, 55%, 60%);
 
     transform: translateY(-50%);
 
     background-image: url("./images/pinecone.png");
     background-repeat: no-repeat;
-    background-size: 450px 450px;
+    background-size: contain;
     opacity: 0.7;
   }
 }

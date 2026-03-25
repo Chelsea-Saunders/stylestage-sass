@@ -514,8 +514,10 @@ blockquote::before {
   background-size: clamp(150%, 200vw, 300%) 100%;
   animation: gradient 1.6s linear infinite;
   animation-play-state: paused;
+  min-block-size: 3.25rem;
+  overflow: visible;
 }
-#about section:nth-of-type(2) ul li:nth-child(5):hover::after {
+#about section:nth-of-type(2) ul li:nth-child(5)::after:hover::after {
   animation-play-state: running;
   opacity: 0.9;
 }
@@ -603,20 +605,25 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(11) {
   position: relative;
+  --track-w: clamp(60px, 12vw, 140px);
+  --thumb-w: 30px;
+  --thumb-h: 30px;
+  --travel: calc((var(--track-w) - var(--thumb-w)) / 2);
 }
 #about section:nth-of-type(2) ul li:nth-child(11)::after {
   content: "";
   position: absolute;
   inset-inline-start: 50%;
   inset-block-start: 50%;
-  block-size: 30px;
-  inline-size: clamp(60px, 12vw, 140px);
+  inline-size: var(--track-w);
+  block-size: var(--thumb-h);
   transform: translate(-50%, -50%);
   border-radius: 999px;
   opacity: 0;
   transition: opacity 0.2s ease;
   background: rgba(54, 164, 168, 0.9);
   pointer-events: none;
+  z-index: 1;
 }
 #about section:nth-of-type(2) ul li:nth-child(11):hover::after {
   opacity: 0.9;
@@ -625,19 +632,20 @@ blockquote::before {
   content: "";
   position: absolute;
   inset-inline-start: 50%;
-  inset-block-start: calc(50% - (clamp(60px, 12vw, 140px) / 2));
-  block-size: 30px;
-  inline-size: 30px;
+  inset-block-start: calc(50%);
+  block-size: var(--thumb-w);
+  inline-size: var(--thumb-w);
   border-radius: 50%;
-  transform: translateY(-50%);
   background: rgba(138, 136, 136, 0.9);
   opacity: 0;
-  transition: opacity 0.2s ease, left 0.35s ease;
   pointer-events: none;
+  z-index: 2;
+  transform: translate(-50%, -50%) translateX(calc(-1 * var(--travel)));
+  transition: opacity 0.2s ease, transform 0.35s ease;
 }
 #about section:nth-of-type(2) ul li:nth-child(11):hover::before {
   opacity: 1;
-  inset-inline-start: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
+  transform: translate(-50%, -50%) translateX(var(--travel));
 }
 #about section:nth-of-type(2) ul li:nth-child(12)::after {
   background: rgba(54, 164, 168, 0.9);
@@ -799,7 +807,7 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(16) {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
   transition: color 0.2s ease;
 }
@@ -812,17 +820,17 @@ blockquote::before {
   inset: 0;
   inline-size: 100%;
   block-size: 100%;
-  inset-inline-start: 0;
-  inset-block-start: 0;
   transform: none;
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
   z-index: 1;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0 6px, transparent 6px 12px), linear-gradient(rgba(54, 164, 168, 0.95), rgba(54, 164, 168, 0.95)), linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), linear-gradient(rgba(54, 126, 168, 0.9), rgba(54, 126, 168, 0.9));
-  background-size: auto, 4px 70%, 4px 70%, 4px 70%;
-  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
-  background-position: 0 50%, 20% 50%, 50% 50%, 80% 50%;
+  background: radial-gradient(circle, rgba(54, 164, 168, 0.95) 0 65%, transparent 66%), radial-gradient(circle, rgba(0, 0, 0, 0.9) 0 65%, transparent 66%), radial-gradient(circle, rgba(54, 126, 168, 0.9) 0 65%, transparent 66%);
+  background-size: 14px 14px, 14px 14px, 14px 14px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: 22% 50%, 50% 50%, 78% 50%;
+  animation: directionShift 1500ms ease-in-out infinite alternate;
+  animation-play-state: paused;
 }
 #about section:nth-of-type(2) ul li:nth-child(16)::before {
   content: "";
@@ -843,6 +851,9 @@ blockquote::before {
 }
 #about section:nth-of-type(2) ul li:nth-child(16):hover::after, #about section:nth-of-type(2) ul li:nth-child(16):hover::before {
   opacity: 1;
+}
+#about section:nth-of-type(2) ul li:nth-child(16):hover::after {
+  animation-play-state: running;
 }
 #about section:nth-of-type(2) ul li:nth-child(17) {
   position: relative;
@@ -1004,6 +1015,14 @@ blockquote::before {
     background-position: 50% 62%, 50% 50%, 35% 50%, 50% 50%, 66% 50%;
   }
 }
+@keyframes directionShift {
+  from {
+    background-position: 22% 50%, 50% 50%, 78% 50%;
+  }
+  to {
+    background-position: 50% 22%, 50% 50%, 50% 78%;
+  }
+}
 @keyframes vfAxis {
   from {
     font-variation-settings: "wght" 200;
@@ -1086,8 +1105,8 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    inline-size: 600px;
-    block-size: 600px;
+    inline-size: clamp(250px, 50vw, 600px);
+    block-size: clamp(250px, 50vw, 600px);
     inset-inline-start: 50%;
     inset-block-start: -15%;
     transform: translateY(-50%);
@@ -1104,14 +1123,14 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    inline-size: 500px;
-    block-size: 500px;
-    inset-inline-start: 5%;
-    inset-block-start: 53%;
+    inline-size: clamp(300px, 40vw, 500px);
+    block-size: clamp(300px, 40vw, 500px);
+    inset-inline-start: clamp(-1%, 5%, 0%);
+    inset-block-start: clamp(50%, 55%, 60%);
     transform: translateY(-50%);
     background-image: url("./images/pinecone.png");
     background-repeat: no-repeat;
-    background-size: 450px 450px;
+    background-size: contain;
     opacity: 0.7;
   }
 }
@@ -1828,10 +1847,10 @@ nav a:hover {
   #main > .container::after {
     content: "";
     position: absolute;
-    inline-size: 400px;
-    block-size: 400px;
+    inline-size: clamp(300px, 30vw, 400px);
+    block-size: clamp(300px, 30vw, 400px);
     inset-inline-start: 58%;
-    inset-block-start: 25rem;
+    inset-block-start: clamp(28rem, calc(40rem - 10vw), 40rem);
     transform: translateY(-50%);
     background-image: url("./images/mountain.png");
     background-repeat: no-repeat;
