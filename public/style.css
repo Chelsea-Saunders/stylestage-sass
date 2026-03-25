@@ -514,7 +514,6 @@ blockquote::before {
   background-size: clamp(150%, 200vw, 300%) 100%;
   animation: gradient 1.6s linear infinite;
   animation-play-state: paused;
-  min-block-size: 3.25rem;
   overflow: visible;
 }
 #about section:nth-of-type(2) ul li:nth-child(5)::after:hover::after {

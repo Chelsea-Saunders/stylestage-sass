@@ -242,7 +242,7 @@
         background-size: clamp(150%, 200vw, 300%) 100%;
         animation: gradient 1.6s linear infinite;
         animation-play-state: paused;
-        min-block-size: 3.25rem;
+        // min-block-size: 3.25rem;
         overflow: visible;
 
         &:hover::after {
