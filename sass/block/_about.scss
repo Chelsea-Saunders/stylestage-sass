@@ -242,10 +242,13 @@
         background-size: clamp(150%, 200vw, 300%) 100%;
         animation: gradient 1.6s linear infinite;
         animation-play-state: paused;
-      }
-      li:nth-child(5):hover::after {
-        animation-play-state: running;
-        opacity: 0.9;
+        min-block-size: 3.25rem;
+        overflow: visible;
+
+        &:hover::after {
+          animation-play-state: running;
+          opacity: 0.9;
+        }
       }
 
       // animation: pulsing dot
@@ -367,20 +370,25 @@
       // min()/mac()/clamp()
       li:nth-child(11) {
         position: relative;
+        --track-w: clamp(60px, 12vw, 140px);
+        --thumb-w: 30px;
+        --thumb-h: 30px;
+        --travel: calc((var(--track-w) - var(--thumb-w)) / 2);
 
         &::after {
           content: "";
           position: absolute;
           inset-inline-start: 50%;
           inset-block-start: 50%;
-          block-size: 30px;
-          inline-size: clamp(60px, 12vw, 140px);
+          inline-size: var(--track-w);
+          block-size: var(--thumb-h);
           transform: translate(-50%, -50%);
           border-radius: 999px;
           opacity: 0;
           transition: opacity 0.2s ease;
           background: rgba(54, 164, 168, 0.9);
           pointer-events: none;
+          z-index: 1;
         }
 
         &:hover::after {
@@ -391,20 +399,21 @@
           content: "";
           position: absolute;
           inset-inline-start: 50%;
-          inset-block-start: calc(50% - (clamp(60px, 12vw, 140px) / 2));
-          block-size: 30px;
-          inline-size: 30px;
+          inset-block-start: calc(50%);
+          block-size: var(--thumb-w);
+          inline-size: var(--thumb-w);
           border-radius: 50%;
-          transform: translateY(-50%);
           background: rgba(138, 136, 136, 0.9);
           opacity: 0;
-          transition: opacity 0.2s ease, left 0.35s ease;
           pointer-events: none;
-        }
+          z-index: 2;
 
+          transform: translate(-50%, -50%) translateX(calc(-1 * var(--travel)));
+          transition: opacity 0.2s ease, transform 0.35s ease;
+        }
         &:hover::before {
           opacity: 1;
-          inset-inline-start: calc(50% + (clamp(60px, 12vw, 140px) /2) - 30px);
+          transform: translate(-50%, -50%) translateX(var(--travel));
         }
       }
 
@@ -655,10 +664,10 @@
         }
       }
 
-      // expanded media
+      // media query
       li:nth-child(16) {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         isolation: isolate;
         transition: color 0.2s ease;
 
@@ -672,8 +681,6 @@
           inset: 0;
           inline-size: 100%;
           block-size: 100%;
-          inset-inline-start: 0;
-          inset-block-start: 0;
           transform: none;
 
           opacity: 0;
@@ -681,33 +688,30 @@
           pointer-events: none;
           z-index: 1;
 
-          // layer 1 (ruler)
+          // layer 2 (3 circles)
           background: 
-            repeating-linear-gradient(
-              90deg,
-              rgba(255,255,255,0.5) 0 6px,
-              transparent 6px 12px 
-            ),
-
-            // layer 2 (3 breakpoints)
-            linear-gradient(rgba(54,164,168,0.95), rgba(54,164,168,0.95)),
-            linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-            linear-gradient(rgba(54, 126, 168, 0.9), rgba(54, 126, 168, 0.9));
+            radial-gradient(circle, rgba(54,164,168,0.95) 0 65%, transparent 66%),
+            radial-gradient(circle, rgba(0, 0, 0, 0.9) 0 65%, transparent 66%),
+            radial-gradient(circle, rgba(54, 126, 168, 0.9) 0 65%, transparent 66%);
 
           background-size: 
-            auto,
-            4px 70%,
-            4px 70%,
-            4px 70%;
+            14px 14px,
+            14px 14px,
+            14px 14px;
           
-          background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+          background-repeat: 
+            no-repeat, 
+            no-repeat, 
+            no-repeat;
 
           // positions for screen sizes
           background-position:
-            0 50%,
-            20% 50%,
+            22% 50%,
             50% 50%,
-            80% 50%;
+            78% 50%;
+
+            animation: directionShift 1500ms ease-in-out infinite alternate;
+            animation-play-state: paused;
         }
 
         &::before {
@@ -732,6 +736,10 @@
         &:hover::after, 
         &:hover::before {
           opacity: 1;
+        }
+
+        &:hover::after {
+          animation-play-state: running;
         }
       }
 
@@ -951,6 +959,22 @@
       35% 50%,
       50% 50%,
       66% 50%;
+    }
+  }
+
+  // media query
+  @keyframes directionShift {
+    from {
+      background-position:
+      22% 50%,
+      50% 50%, 
+      78% 50%;
+    }
+    to {
+      background-position:
+      50% 22%,
+      50% 50%, 
+      50% 78%;
     }
   }
 
