@@ -6,7 +6,23 @@ $color-background-dark-mode: #1E242C !default;
 $color-links: #B7C4BE !default;
 $color-light: #E6E9EB !default;
 $color-accent: #75b5c1 !default;
-$color-gradient: #0f1c2a !default;
+
+$color-gradient-light: linear-gradient( 
+  180deg,
+  #0f1c2a 0%,
+  #{$color-background} 30%,
+  #{$color-background} 70%,
+  #0f1c2a 100%
+) !default;
+
+$color-gradient-dark: linear-gradient(
+  180deg,
+  #{mix($color-background-dark-mode, #000, 55%)} 0%,
+  #{$color-background-dark-mode} 30%,
+  #{$color-background-dark-mode} 70%,
+  #{mix($color-background-dark-mode, #000, 55%)} 100%
+) !default;
+
 $brand-colors: (
   primary: $color-primary,
   primary-alt: $color-primary-alt,
@@ -69,6 +85,9 @@ $font-sizes: (
   @each $key, $color in $colors {
     --color-#{$key}: #{$color};
   }
+
+  --page-background: #{$color-gradient-light};
+
   --font-header: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-subheader: "Skranji", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;  
@@ -87,23 +106,12 @@ $font-sizes: (
 // AUTO DARK MODE: based on user's system preferences
 @media (prefers-color-scheme: dark) {
   :root {
-    // override only what needs to change
     --color-background: #{$color-background-dark-mode};
-
-    // lighter text
     --color-text: #{$color-light};
-
-    // contrast for links
     --color-anchor: #{$color-links};
-
-    // brand colors with more contrast
     --color-primary: #{$color-primary-alt};
     --color-primary-alt: #{$color-accent};
-
-    // accent color
     --color-accent: #{$color-accent};
-
-    // redefined light color for dark mode
-    --color-light: #{mix($color-background-dark-mode, #000, 15%)};
+    --page-background: #{$color-gradient-dark};
   }
 }
