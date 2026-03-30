@@ -1610,7 +1610,7 @@ nav a:hover {
   margin: 1rem auto 10vh;
   padding: 1.25rem;
   z-index: 1;
-  color: var(--color-light);
+  color: var(--color-dark);
 }
 .profile h4 {
   margin: 0;
