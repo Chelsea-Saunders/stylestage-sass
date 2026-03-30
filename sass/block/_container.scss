@@ -100,14 +100,14 @@
             block-size: clamp(300px, 30vw, 400px);
 
             inset-inline-start: 58%;
-            inset-block-start: clamp(28rem, calc(40rem - 10vw), 40rem);
+            inset-block-start: clamp(25rem, calc(40rem - 18vw), 40rem);
 
             transform: translateY(-50%);
 
-            // image source: canva (Pro content) 
-            // used under Canva Content License Agreement 
-            // https://www.canva.com/po.icies/content-license-agreement/
-            // modified and used as part of this project 
+            /* image source: canva (Pro content) 
+            used under Canva Content License Agreement 
+            https://www.canva.com/po.icies/content-license-agreement/
+            modified and used as part of this project */
              
             background-image: url("./images/mountain.png");
             background-repeat: no-repeat;
