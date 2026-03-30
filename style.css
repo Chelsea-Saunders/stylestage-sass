@@ -14,6 +14,7 @@
   --color-accent: #75b5c1;
   --color-gray: #666a6d;
   --color-links: #B7C4BE;
+  --page-background: linear-gradient(180deg, #0f1c2a 0%, #E6E9EB 30%, #E6E9EB 70%, #0f1c2a 100%);
   --font-header: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-subheader: "Skranji", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -36,7 +37,7 @@
     --color-primary: #6B8FA3;
     --color-primary-alt: #75b5c1;
     --color-accent: #75b5c1;
-    --color-light: #050507;
+    --page-background: linear-gradient(180deg, #111418 0%, #1E242C 30%, #1E242C 70%, #111418 100%);
   }
 }
 /*
@@ -159,7 +160,7 @@ html {
 
 body {
   /* gradient added for bkgnd */
-  background: linear-gradient(180deg, #0f1c2a 0%, #E6E9EB 30%, #E6E9EB 70%, #0f1c2a 100%);
+  background: var(--page-background);
   scroll-behavior: smooth !important;
   background-color: var(--color-background);
   color: var(--color-text);
@@ -514,7 +515,6 @@ blockquote::before {
   background-size: clamp(150%, 200vw, 300%) 100%;
   animation: gradient 1.6s linear infinite;
   animation-play-state: paused;
-  min-block-size: 3.25rem;
   overflow: visible;
 }
 #about section:nth-of-type(2) ul li:nth-child(5)::after:hover::after {
@@ -1078,6 +1078,7 @@ blockquote::before {
 }
 #contribute {
   grid-area: contribute;
+  z-index: -100;
 }
 #contribute > .container {
   margin-block-end: 3rem;
@@ -1123,10 +1124,10 @@ blockquote::before {
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    inline-size: clamp(300px, 40vw, 500px);
-    block-size: clamp(300px, 40vw, 500px);
+    inline-size: clamp(300px, 35vw, 450px);
+    block-size: clamp(300px, 35vw, 450px);
     inset-inline-start: clamp(-1%, 5%, 0%);
-    inset-block-start: clamp(50%, 55%, 60%);
+    inset-block-start: clamp(50%, 50%, 60%);
     transform: translateY(-50%);
     background-image: url("./images/pinecone.png");
     background-repeat: no-repeat;
@@ -1372,7 +1373,7 @@ blockquote::before {
     transform: translateY(-50%);
     background-image: url("./images/blue-snowflake.png");
     background-repeat: no-repeat;
-    background-position: left 2rem top 3rem, right 1rem bottom 4rem;
+    background-position: left 2rem top 3rem;
     background-size: 320px 300px;
     opacity: 0.15;
     animation: pulseSnowflake 3s ease-in-out infinite;
@@ -1380,7 +1381,7 @@ blockquote::before {
 }
 @keyframes pulseSnowflake {
   0% {
-    transform: translateY(-50%) sclae(1);
+    transform: translateY(-50%) scale(1);
     opacity: 0.2;
   }
   50% {
@@ -1545,12 +1546,14 @@ nav {
   text-decoration-style: wavy;
   text-decoration-color: var(--color-secondary);
   text-decoration-thickness: 1px;
+  z-index: 2;
 }
 
 #about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover,
 #guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover,
 #contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover {
   color: var(--color-accent);
+  z-index: 2;
 }
 
 nav {
