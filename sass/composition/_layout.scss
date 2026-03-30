@@ -7,13 +7,7 @@ html{
 body {
 
   /* gradient added for bkgnd */
-  background: linear-gradient(
-    180deg,
-    $color-gradient 0%,
-    $color-background 30%,
-    $color-background 70%,
-    $color-gradient 100%,
-  );
+  background: var(--page-background);
 
   scroll-behavior: smooth !important;
   background-color: var(--color-background);

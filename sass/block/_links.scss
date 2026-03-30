@@ -115,10 +115,12 @@
   text-decoration-style: wavy;
   text-decoration-color: var(--color-secondary);
   text-decoration-thickness: 1px;
+  z-index: 2;
 }
 
 #about a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover, 
 #guidelines a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover, 
 #contribute a:not(.link-codepen, .link-downloadcss, .link-downloadhtml, .link-guidelines):hover {
   color: var(--color-accent);
+  z-index: 2;
 }
