@@ -40,6 +40,8 @@
         grid-column: 1;
         grid-row: 2;
         margin-block-start: -10rem;
+        position: relative;
+        z-index: 200;
         
     }
     // right column
@@ -47,6 +49,12 @@
         grid-column: 1 / -1;
         grid-row: 2;
         margin-block-start: 30rem;
+        position: relative;
+        pointer-events: none;
+    }
+    //remove overlap of contribute on guidelines
+    #contribute > * {
+        pointer-events: auto;
     }
     // top right
     #about {

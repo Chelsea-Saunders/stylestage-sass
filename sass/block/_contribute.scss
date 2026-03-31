@@ -1,7 +1,8 @@
 
 #contribute {
   grid-area: contribute;
-  z-index: -100;
+  position: relative;
+  // z-index: -100;
 
   & > .container {
     margin-block-end: 3rem;
@@ -30,6 +31,9 @@
 }
 
 @media (min-width: 950px) {
+  #contribute > .container:first-of-type {
+    position: relative;
+  }
   #contribute::after {
     content: "";
     position: absolute;
@@ -39,10 +43,10 @@
     inline-size: clamp(250px, 50vw, 600px);
     block-size: clamp(250px, 50vw, 600px);
 
-    inset-inline-start: 50%;
-    inset-block-start: -15%;
+    left: 50%;
+    top: -27%;
 
-    transform: translateY(-50%);
+    transform: translateY(-50%, -50%);
 
     /* image source: canva (Pro content) 
     used under Canva Content License Agreement 
@@ -51,7 +55,7 @@
     background-image: url("./images/cabin.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 400px 400px;
+    background-size: 400px;
 
     // fade edges
     -webkit-mask-image: radial-gradient(
@@ -67,6 +71,10 @@
       transparent 100%
     );
   }
+  #contribute > .container:nth-of-type(2) {
+    position: relative;
+  }
+
   #contribute::before {
     content: "";
     position: absolute;
@@ -76,10 +84,10 @@
     inline-size: clamp(300px, 35vw, 450px);
     block-size: clamp(300px, 35vw, 450px);
 
-    inset-inline-start: clamp(-1%, 5%, 0%);
-    inset-block-start: clamp(50%, 50%, 60%);
+    left: 20%;
+    top: 53%;
 
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
 
     /* image source: canva (Pro content) 
     used under Canva Content License Agreement 
