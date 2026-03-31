@@ -1078,7 +1078,7 @@ blockquote::before {
 }
 #contribute {
   grid-area: contribute;
-  z-index: -100;
+  position: relative;
 }
 #contribute > .container {
   margin-block-end: 3rem;
@@ -1101,6 +1101,10 @@ blockquote::before {
 }
 
 @media (min-width: 950px) {
+  #contribute > .container:first-of-type {
+    position: relative;
+  }
+
   #contribute::after {
     content: "";
     position: absolute;
@@ -1108,9 +1112,9 @@ blockquote::before {
     z-index: 1;
     inline-size: clamp(250px, 50vw, 600px);
     block-size: clamp(250px, 50vw, 600px);
-    inset-inline-start: 50%;
-    inset-block-start: -15%;
-    transform: translateY(-50%);
+    left: 50%;
+    top: -27%;
+    transform: translateY(-50%, -50%);
     /* image source: canva (Pro content) 
     used under Canva Content License Agreement 
     https://www.canva.com/po.icies/content-license-agreement/
@@ -1118,9 +1122,13 @@ blockquote::before {
     background-image: url("./images/cabin.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 400px 400px;
+    background-size: 400px;
     -webkit-mask-image: radial-gradient(ellipse 30% 120% at center, black 45%, black 50%, transparent 100%);
     mask-image: radial-gradient(ellipse 30% 120% at center, black 45%, black 50%, transparent 100%);
+  }
+
+  #contribute > .container:nth-of-type(2) {
+    position: relative;
   }
 
   #contribute::before {
@@ -1130,9 +1138,9 @@ blockquote::before {
     z-index: 1;
     inline-size: clamp(300px, 35vw, 450px);
     block-size: clamp(300px, 35vw, 450px);
-    inset-inline-start: clamp(-1%, 5%, 0%);
-    inset-block-start: clamp(50%, 50%, 60%);
-    transform: translateY(-50%);
+    left: 20%;
+    top: 53%;
+    transform: translate(-50%, -50%);
     /* image source: canva (Pro content) 
     used under Canva Content License Agreement 
     https://www.canva.com/po.icies/content-license-agreement/
@@ -1817,12 +1825,20 @@ nav a:hover {
     grid-column: 1;
     grid-row: 2;
     margin-block-start: -10rem;
+    position: relative;
+    z-index: 200;
   }
 
   #contribute {
     grid-column: 1/-1;
     grid-row: 2;
     margin-block-start: 30rem;
+    position: relative;
+    pointer-events: none;
+  }
+
+  #contribute > * {
+    pointer-events: auto;
   }
 
   #about {
